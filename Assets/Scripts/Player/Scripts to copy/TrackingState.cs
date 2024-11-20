@@ -6,7 +6,7 @@ public class TrackingState : IEnemyState
 {
 
     // we declare a variable called enemy. it's type is statePattern enemy. it is a class.
-    private StatePatternEnemy enemy;
+    private Dummy enemy;
 
     int nextWaypoint; // Index of the waypoint in the array
 
@@ -17,7 +17,7 @@ public class TrackingState : IEnemyState
     // this means that in the future we get access to enemy's properties by writing enemy.something
     // for example enemy.searchDuration so we get the value on that.
     // constructor
-    public TrackingState(StatePatternEnemy statePatternEnemy)
+    public TrackingState(Dummy statePatternEnemy)
     {
         enemy = statePatternEnemy;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemyState 
+public interface IEnemyState
 {
     // Put here list of methods for the contract
 

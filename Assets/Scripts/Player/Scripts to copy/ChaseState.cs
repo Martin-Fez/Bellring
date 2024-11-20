@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ChaseState : IEnemyState
 {
-    private StatePatternEnemy enemy;
+    private Dummy enemy;
 
-    public ChaseState(StatePatternEnemy statePatternEnemy)
+    public ChaseState(Dummy statePatternEnemy)
     {
         enemy = statePatternEnemy;
     }

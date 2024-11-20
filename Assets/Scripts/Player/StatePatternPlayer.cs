@@ -12,15 +12,17 @@ public class StatePatternPlayer : MonoBehaviour
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
 
+    public int hearts = 30; // if this hits 0, player becomes tired
+
     public Image filler; // this is the image. we\ll adjust fillamount value
 
-    public string playerName;
+    //public string playerName;
 
     public TMP_Text healthField;
-    public TMP_Text nameField;
+    //public TMP_Text nameField;
 
 
-    [HideInInspector] public Transform chaseTarget; // This is what we chase in chase state. Usually Player.
+    //[HideInInspector] public Transform chaseTarget; // This is what we chase in chase state. Usually Player.
     [HideInInspector] public IPlayerState currentState;
     [HideInInspector] public DuckState duckState;
     [HideInInspector] public NeutralState neutralState;

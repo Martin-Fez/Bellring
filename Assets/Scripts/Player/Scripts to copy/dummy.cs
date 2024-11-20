@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StatePatternEnemy : MonoBehaviour
+
+
+public class Dummy : MonoBehaviour
 {
 
     public float searchDuration; // How long we seach in Alert state
@@ -22,6 +24,11 @@ public class StatePatternEnemy : MonoBehaviour
     [HideInInspector] public NavMeshAgent navMeshAgent;
     public Vector3 lastKnownPlayerPostition; // When sight to player is lost, the position of the player is stored in this variable
 
+    public Dummy()
+    {
+    }
+
+    /*
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -31,9 +38,10 @@ public class StatePatternEnemy : MonoBehaviour
         chaseState = new ChaseState(this);
         trackingState = new TrackingState(this);
     }
+    /*
 
 
-
+    /*
 
     // Start is called before the first frame update
     void Start()
@@ -54,5 +62,5 @@ public class StatePatternEnemy : MonoBehaviour
         // we call currentState's ontriggerEnter
         currentState.OnTriggerEnter(other);
     }
-
-}
+    */
+} 

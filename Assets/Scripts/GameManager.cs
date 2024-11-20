@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public float previousHealth; // before we took damage
     public float maxHealth; // max hp
 
+    public float enemyHealth;
+    public float enemyPreviousHealth;
+    public float enemyMaxHealth;
+
     public bool Level1;
     public bool Level2;
     public bool Level3;

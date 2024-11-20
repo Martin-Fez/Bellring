@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AlertState : IEnemyState
 {
-    private StatePatternEnemy enemy;
+    private Dummy enemy;
     float searchTimer;
 
-    public AlertState(StatePatternEnemy statePatternEnemy)
+    public AlertState(Dummy statePatternEnemy)
     {
         enemy = statePatternEnemy;
     }
