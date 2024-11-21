@@ -20,30 +20,30 @@ public class NeutralState : IPlayerState
         player.indicator2.material.color = Color.white;
         player.indicator3.material.color = Color.white;
 
+        //attacks
 
-
-        if (Input.GetKey("z") && !Input.GetKey("up"))
+        if (Input.GetKeyDown("z") && !Input.GetKey("up"))
         {
             player.indicator1.material.color = Color.green;
             player.currentState = player.lJabState;
             return;
         }
 
-        if (Input.GetKey("x") && !Input.GetKey("up"))
+        if (Input.GetKeyDown("x") && !Input.GetKey("up"))
         {
             player.indicator2.material.color = Color.green;
             player.currentState = player.rJabState;
             return;
         }
 
-        if (Input.GetKey("z") && Input.GetKey("up"))
+        if (Input.GetKeyDown("z") && Input.GetKey("up"))
         {
             player.indicator1.material.color = Color.red;
             player.currentState = player.lUpJabState;
             return;
         }
 
-        if (Input.GetKey("x") && Input.GetKey("up"))
+        if (Input.GetKeyDown("x") && Input.GetKey("up"))
         {
             player.indicator2.material.color = Color.red;
             player.currentState = player.rUpjabState;
@@ -53,7 +53,7 @@ public class NeutralState : IPlayerState
 
         // non attack segment
 
-        if (Input.GetKey("space")) // uppercut
+        if (Input.GetKeyDown("space")) // uppercut
         {
             player.indicator1.material.color = Color.red;
             player.indicator2.material.color = Color.red;
@@ -70,7 +70,7 @@ public class NeutralState : IPlayerState
         }
 
 
-        if (Input.GetKey("left")) 
+        if (Input.GetKeyDown("left")) 
         {
             player.indicator1.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
@@ -78,7 +78,7 @@ public class NeutralState : IPlayerState
             return;
         }
 
-        if (Input.GetKey("right")) // block
+        if (Input.GetKeyDown("right")) // block
         {
             player.indicator2.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
@@ -86,7 +86,7 @@ public class NeutralState : IPlayerState
             return;
         }
 
-        if (Input.GetKey("down")) // block
+        if (Input.GetKeyDown("down")) // block
         {
             player.indicator1.material.color = Color.blue;
             player.indicator2.material.color = Color.blue;

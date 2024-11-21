@@ -22,5 +22,6 @@ public interface IPlayerState
     void UpdateState();
 
 
+    // checks if we switch to hurtState, if yes, reset any values and change state to hurt state
     void ToHurtState();
 }

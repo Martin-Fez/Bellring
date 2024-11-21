@@ -16,6 +16,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public Image filler; // this is the image. we\ll adjust fillamount value
 
     //public string playerName;
+    public StatePatternPlayer player;
 
     public TMP_Text healthField;
     //public TMP_Text nameField;
@@ -49,9 +50,9 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         */
         enemyBlockState = new EnemyBlockState();
         enemyHookState = new EnemyHookState();
-        enemyHurtState = new EnemyHurtState();
+        enemyHurtState = new EnemyHurtState(player,this);
         enemyJabState = new EnemyJabState();
-        enemyNeutralState = new EnemyNeutralState();
+        enemyNeutralState = new EnemyNeutralState(player, this);
         enemySpecialState = new EnemySpecialState();
 
     }

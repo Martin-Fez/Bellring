@@ -12,6 +12,9 @@ public class StatePatternPlayer : MonoBehaviour
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
 
+    public StatePatternEnemyBoxer enemyBoxer; // hope this works
+
+
     public int hearts = 30; // if this hits 0, player becomes tired
 
     public Image filler; // this is the image. we\ll adjust fillamount value
@@ -41,16 +44,17 @@ public class StatePatternPlayer : MonoBehaviour
     {
         //navMeshAgent = GetComponent<NavMeshAgent>();
 
+
         neutralState = new NeutralState(this);
-        duckState = new DuckState(this);
+        duckState = new DuckState(this,enemyBoxer);
         blockState = new BlockState(this); 
         leftDodgeState = new LeftDodgeState(this);
         rightDodgeState = new RightDodgeState(this);
-        rJabState = new RJabState(this);
-        lJabState = new LJabState(this);
-        rUpjabState = new RUpJabState(this);
-        lUpJabState = new LUpJabState(this);
-        upperCutState = new UpperCutState(this);
+        rJabState = new RJabState(this, enemyBoxer);
+        lJabState = new LJabState(this, enemyBoxer);
+        rUpjabState = new RUpJabState(this, enemyBoxer);
+        lUpJabState = new LUpJabState(this, enemyBoxer);
+        upperCutState = new UpperCutState(this, enemyBoxer);
         hurtState = new HurtState(this);
         // maybe add a state where player is hit
 

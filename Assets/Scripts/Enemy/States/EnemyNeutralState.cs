@@ -4,17 +4,50 @@ using UnityEngine;
 
 public class EnemyNeutralState : IEnemyStateBoxer
 {
+
+    float timer = 0;
+    private StatePatternPlayer player;
+    private StatePatternEnemyBoxer enemyBoxer;
+
+
+    public EnemyNeutralState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
+    {
+        player = statePatternPlayer;
+        enemyBoxer = StatePatternEnemyBoxer;
+    }
+
     public void ToHurtState()
     {
-        throw new System.NotImplementedException();
+        if (timer < 3f)
+            return;
+        else
+        {
+            //timer = 0;
+            enemyBoxer.currentState = enemyBoxer.enemyHurtState;
+        }
     }
 
     public void UpdateState()
     {
-        throw new System.NotImplementedException();
+        timer += Time.deltaTime;
+        timer = timer % 5;
+        enemyBoxer.indicator1.material.color = Color.white;
+        enemyBoxer.indicator2.material.color = Color.white;
+
+        if(timer < 3f)
+        {
+            enemyBoxer.indicator3.material.color = Color.red;
+
+        }
+        else
+            enemyBoxer.indicator3.material.color = Color.white;
+
+
+
     }
 
     // Start is called before the first frame update
+    /*
     void Start()
     {
         
@@ -25,4 +58,5 @@ public class EnemyNeutralState : IEnemyStateBoxer
     {
         
     }
+    */
 }

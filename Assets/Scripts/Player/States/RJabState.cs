@@ -6,11 +6,13 @@ public class RJabState : IPlayerState
 {
     float timer = 0;
     private StatePatternPlayer player;
+    private StatePatternEnemyBoxer enemyBoxer;
 
 
-    public RJabState(StatePatternPlayer statePatternPlayer)
+    public RJabState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
     {
         player = statePatternPlayer;
+        enemyBoxer = StatePatternEnemyBoxer;
     }
 
     public void UpdateState()
@@ -19,6 +21,7 @@ public class RJabState : IPlayerState
 
         if (timer > 0.5f) // hard coded jab time
         {
+            enemyBoxer.currentState.ToHurtState();
             player.currentState = player.neutralState;
             timer = 0;
         }

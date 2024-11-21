@@ -652,6 +652,7 @@ MonoBehaviour:
   indicator1: {fileID: 977189493}
   indicator2: {fileID: 252237126}
   indicator3: {fileID: 501106721}
+  enemyBoxer: {fileID: 832886408}
   hearts: 30
   filler: {fileID: 0}
   healthField: {fileID: 1963640002}
@@ -914,8 +915,8 @@ MonoBehaviour:
   indicator2: {fileID: 810070198}
   indicator3: {fileID: 885236012}
   filler: {fileID: 0}
+  player: {fileID: 758720791}
   healthField: {fileID: 1299329352}
-  enemyNeutralState: {fileID: 0}
 --- !u!1 &885236009
 GameObject:
   m_ObjectHideFlags: 0

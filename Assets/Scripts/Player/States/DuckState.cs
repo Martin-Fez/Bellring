@@ -6,11 +6,13 @@ public class DuckState : IPlayerState
 {
     float timer = 0;
     private StatePatternPlayer player;
+    private StatePatternEnemyBoxer enemyBoxer;
 
 
-    public DuckState(StatePatternPlayer statePatternPlayer)
+    public DuckState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
     {
         player = statePatternPlayer;
+        enemyBoxer = StatePatternEnemyBoxer;
     }
     public void UpdateState()
     {
@@ -20,6 +22,7 @@ public class DuckState : IPlayerState
         {
             player.currentState = player.neutralState;
             timer = 0;
+            enemyBoxer.currentState = enemyBoxer.enemyHurtState; // REMOVE LATER, will also call the enemy to hurt function
         }
     }
 
