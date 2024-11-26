@@ -35,6 +35,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     [HideInInspector] public EnemyJabState enemyJabState;
     [HideInInspector] public EnemyNeutralState enemyNeutralState;
     [HideInInspector] public EnemySpecialState enemySpecialState;
+    [HideInInspector] public EnemyKnockoutState enemyKnockoutState;
 
 
 
@@ -59,6 +60,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         enemyJabState = new EnemyJabState();
         enemyNeutralState = new EnemyNeutralState(player, this);
         enemySpecialState = new EnemySpecialState();
+        enemyKnockoutState = new EnemyKnockoutState(player, this);
 
     }
 

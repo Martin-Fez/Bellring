@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour
     public float maxHealth; // max hp
     public int stars;
     public int hearts;
-    public int knockoutsThisRound;
+    public int knockoutsThisRound; // how many times the PLAYER has been knockedouted
     public int knockoutsTotal;
 
 
     public float enemyHealth;
     public float enemyPreviousHealth;
     public float enemyMaxHealth;
-    public int enemyKnockoutsThisRound;
+    public int enemyKnockoutsThisRound; // how many times the ENEMY has been knockouted
     public int enemyKnockoutsTotal;
 
     public bool Level1;

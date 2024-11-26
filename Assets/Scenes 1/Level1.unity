@@ -1885,9 +1885,9 @@ MonoBehaviour:
   hearts: 0
   knockoutsThisRound: 0
   knockoutsTotal: 0
-  enemyHealth: 300
+  enemyHealth: 20
   enemyPreviousHealth: 0
-  enemyMaxHealth: 0
+  enemyMaxHealth: 50
   enemyKnockoutsThisRound: 0
   enemyKnockoutsTotal: 0
   Level1: 0

@@ -33,11 +33,22 @@ public class EnemyHurtState : IEnemyStateBoxer
         {
             //player.currentState = player.neutralState;
             CalculateBlockingSwitch();
-
-
-
             timer = 0;
+
+
+            if(GameManager.manager.enemyHealth <= 0)
+            {
+                GameManager.manager.enemyKnockoutsThisRound += 1;
+                GameManager.manager.enemyKnockoutsTotal += 1;
+                enemyBoxer.currentState = enemyBoxer.enemyKnockoutState;
+                return; // without return it continues
+                //Debug.Log("THIS SHOULD NOT SHOW");
+            }
+
+
+
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
+            return;
         }
     }
 
