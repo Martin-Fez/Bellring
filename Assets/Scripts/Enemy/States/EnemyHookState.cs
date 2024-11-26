@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHookState : IEnemyStateBoxer
 {
-    public void ToHurtState()
+    public void ToHurtState(float damage, int lowerAttack)
     {
         throw new System.NotImplementedException();
     }

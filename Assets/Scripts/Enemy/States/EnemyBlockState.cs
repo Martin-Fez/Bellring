@@ -4,25 +4,54 @@ using UnityEngine;
 
 public class EnemyBlockState : IEnemyStateBoxer
 {
-    public void ToHurtState()
+
+    float timer = 0;
+    private StatePatternPlayer player;
+    private StatePatternEnemyBoxer enemyBoxer;
+
+
+    public EnemyBlockState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
+    {
+        player = statePatternPlayer;
+        enemyBoxer = StatePatternEnemyBoxer;
+    }
+
+
+    public void ToHurtState(float damage, int lowerAttack)
     {
         throw new System.NotImplementedException();
     }
 
     public void UpdateState()
     {
-        throw new System.NotImplementedException();
+        timer += Time.deltaTime;
+        enemyBoxer.indicator1.material.color = Color.red;
+        enemyBoxer.indicator2.material.color = Color.red;
+        enemyBoxer.indicator3.material.color = Color.red;
+
+        if (timer > 0.2f) // hard coded hurt state, change later
+        {
+            //player.currentState = player.neutralState;
+            //CalculateBlockingSwitch();
+
+
+
+            timer = 0;
+            enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
+        }
     }
+
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

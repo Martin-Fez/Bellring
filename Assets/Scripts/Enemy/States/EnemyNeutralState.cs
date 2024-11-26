@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,14 +17,18 @@ public class EnemyNeutralState : IEnemyStateBoxer
         enemyBoxer = StatePatternEnemyBoxer;
     }
 
-    public void ToHurtState()
+    public void ToHurtState(float damage, int lowerAttack)
     {
-        if (timer < 3f)
-            return;
-        else
+
+        if( lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower)) // if uppercut or lowerattack and block do not match
         {
             //timer = 0;
+            enemyBoxer.TakeDamage(damage);
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
+        }
+        else
+        {
+            enemyBoxer.currentState = enemyBoxer.enemyBlockState;
         }
     }
 
@@ -33,7 +38,10 @@ public class EnemyNeutralState : IEnemyStateBoxer
         timer = timer % 5;
         enemyBoxer.indicator1.material.color = Color.white;
         enemyBoxer.indicator2.material.color = Color.white;
+        enemyBoxer.indicator3.material.color = Color.white;
 
+
+        /*
         if(timer < 3f)
         {
             enemyBoxer.indicator3.material.color = Color.red;
@@ -41,6 +49,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
         }
         else
             enemyBoxer.indicator3.material.color = Color.white;
+        */
 
 
 
@@ -59,4 +68,4 @@ public class EnemyNeutralState : IEnemyStateBoxer
         
     }
     */
-}
+    }

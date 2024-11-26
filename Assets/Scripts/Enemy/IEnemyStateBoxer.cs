@@ -22,5 +22,5 @@ public interface IEnemyStateBoxer
     void UpdateState();
 
 
-    void ToHurtState();
+    void ToHurtState(float damage,int lowerAttack);
 }

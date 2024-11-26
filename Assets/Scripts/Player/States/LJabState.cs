@@ -25,7 +25,8 @@ public class LJabState : IPlayerState
 
         if(timer > 0.5f) // hard coded jab time
         {
-            enemyBoxer.currentState.ToHurtState();
+            enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage,1); 
+                
             player.currentState = player.neutralState;
             timer = 0;
         }

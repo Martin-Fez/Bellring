@@ -10,6 +10,11 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public MeshRenderer indicator1;
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
+    public MeshRenderer indicator4_Body;
+
+    public int hitsBeforeSwitch; // how many hits can the boxer take before he starts blocking there
+
+    public bool blockingLower;
 
     //public int hearts = 30; // if this hits 0, player becomes tired
 
@@ -48,7 +53,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         upperCutState = new UpperCutState(this);
         hurtState = new HurtState(this);
         */
-        enemyBlockState = new EnemyBlockState();
+        enemyBlockState = new EnemyBlockState(player, this);
         enemyHookState = new EnemyHookState();
         enemyHurtState = new EnemyHurtState(player,this);
         enemyJabState = new EnemyJabState();
@@ -80,6 +85,13 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public void UpdateManager()
     {
         healthField.text = GameManager.manager.enemyHealth.ToString();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
+        //counter = 0;
+        GameManager.manager.enemyHealth -= damage;
     }
 
 }

@@ -5,20 +5,41 @@ using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager manager;
 
+
+    public TMP_Text RoundField;
+    public TMP_Text TimerField;
+
+    public bool InBattle;
+
+
     public string currentLevel;
+    public float FightTimer = 0;
+    public float score = 0;
+    public int round = 1;
+
+
+
     public float health;// current health left
     public float previousHealth; // before we took damage
     public float maxHealth; // max hp
+    public int stars;
+    public int hearts;
+    public int knockoutsThisRound;
+    public int knockoutsTotal;
+
 
     public float enemyHealth;
     public float enemyPreviousHealth;
     public float enemyMaxHealth;
+    public int enemyKnockoutsThisRound;
+    public int enemyKnockoutsTotal;
 
     public bool Level1;
     public bool Level2;
@@ -46,12 +67,33 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        RoundField.text = "Round: 1";
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(InBattle)
+        {
+            FightTimer += Time.deltaTime;
+
+            TimerField.text =  "Time: " + Math.Floor(FightTimer).ToString();
+
+
+
+            if (FightTimer >= 180)
+            {
+                FightTimer = 0;
+                round += 1;
+                RoundField.text = "Round: " + round.ToString();
+                // next round, insert function here
+            }
+            
+
+
+        }
+
+
         if (Input.GetKeyUp(KeyCode.M))
         {
             SceneManager.LoadScene("MainMenu");

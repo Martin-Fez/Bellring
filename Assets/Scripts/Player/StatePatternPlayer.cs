@@ -8,6 +8,11 @@ using TMPro;
 
 public class StatePatternPlayer : MonoBehaviour
 {
+
+    public float playerStandartAttackDamage;
+    public float PlayerSpecialAttackDamage;
+
+
     public MeshRenderer indicator1;
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
@@ -89,13 +94,13 @@ public class StatePatternPlayer : MonoBehaviour
     }
 
 
-    /*
+    
     public void TakeDamage(float damage)
     {
-        GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
-        counter = 0;
+        //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
+        //counter = 0;
         GameManager.manager.health -= damage;
     }
-    */
+    
 
 }

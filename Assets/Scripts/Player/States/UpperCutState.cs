@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpperCutState : IPlayerState
+public class UpperCutState : IPlayerState // AKA player special attack
 {
     float timer = 0;
     private StatePatternPlayer player;
@@ -20,7 +20,7 @@ public class UpperCutState : IPlayerState
 
         if (timer > 0.5f) // hard coded jab time
         {
-            enemyBoxer.currentState.ToHurtState();
+            enemyBoxer.currentState.ToHurtState(player.PlayerSpecialAttackDamage, 2); // special state will have to check for it
             player.currentState = player.neutralState;
             timer = 0;
         }

@@ -17,7 +17,7 @@ public class EnemyHurtState : IEnemyStateBoxer
     }
 
 
-    public void ToHurtState()
+    public void ToHurtState(float damage, int lowerAttack)
     {
         throw new System.NotImplementedException();
     }
@@ -32,10 +32,31 @@ public class EnemyHurtState : IEnemyStateBoxer
         if (timer > 0.2f) // hard coded hurt state, change later
         {
             //player.currentState = player.neutralState;
+            CalculateBlockingSwitch();
+
+
+
             timer = 0;
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
         }
     }
+
+
+    void CalculateBlockingSwitch() // checks how many times boxer has been hit and switches the blocking stance
+    {
+        enemyBoxer.hitsBeforeSwitch -= 1;
+        if (enemyBoxer.hitsBeforeSwitch == 0)
+        {
+            enemyBoxer.hitsBeforeSwitch = 2; // will change
+            enemyBoxer.blockingLower = !enemyBoxer.blockingLower;
+
+            if (enemyBoxer.blockingLower)
+                enemyBoxer.indicator4_Body.material.color = Color.green;
+            else
+                enemyBoxer.indicator4_Body.material.color = Color.red;
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()

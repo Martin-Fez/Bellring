@@ -22,7 +22,7 @@ public class DuckState : IPlayerState
         {
             player.currentState = player.neutralState;
             timer = 0;
-            enemyBoxer.currentState = enemyBoxer.enemyHurtState; // REMOVE LATER, will also call the enemy to hurt function
+            //enemyBoxer.currentState = enemyBoxer.enemyHurtState; // REMOVE LATER, will also call the enemy to hurt function
         }
     }
 
