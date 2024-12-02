@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using UnityEngine.UI;
 using TMPro;
+using System.Xml.Linq;
 
 public class StatePatternPlayer : MonoBehaviour
 {
@@ -16,6 +17,14 @@ public class StatePatternPlayer : MonoBehaviour
     public MeshRenderer indicator1;
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
+
+
+
+
+    public Animator _animator;
+    public string currentAnimationState = "";
+    //public const string PLAYER_IDLE = "PlayerIdle";
+    //public const string PLAYER_JAB_LEFT = "PlayerJabLeft";
 
     public StatePatternEnemyBoxer enemyBoxer; // hope this works
 
@@ -71,12 +80,21 @@ public class StatePatternPlayer : MonoBehaviour
     void Start()
     {
         // Let's tell enemy that in the beginning it's current state is the patrolStaet
+        _animator = gameObject.GetComponent<Animator>();
+
         currentState = neutralState;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.manager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
+        {
+            currentState = neutralState;
+            return;
+        }
+
+
         UpdateManager();
         // we will update according to the state
         currentState.UpdateState();
@@ -90,7 +108,7 @@ public class StatePatternPlayer : MonoBehaviour
 
     public void UpdateManager()
     {
-        healthField.text = GameManager.manager.health.ToString();
+        healthField.text = "player health: " + GameManager.manager.health.ToString();
     }
 
 

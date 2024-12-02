@@ -24,6 +24,9 @@ public class EnemyHurtState : IEnemyStateBoxer
 
     public void UpdateState()
     {
+        Debug.Log("hurt state");
+
+
         timer += Time.deltaTime;
         enemyBoxer.indicator1.material.color = Color.grey;
         enemyBoxer.indicator2.material.color = Color.grey;
@@ -60,11 +63,20 @@ public class EnemyHurtState : IEnemyStateBoxer
         {
             enemyBoxer.hitsBeforeSwitch = 2; // will change
             enemyBoxer.blockingLower = !enemyBoxer.blockingLower;
+            enemyBoxer._animator.SetBool("BlockLow", enemyBoxer.blockingLower);
+
 
             if (enemyBoxer.blockingLower)
+            {
                 enemyBoxer.indicator4_Body.material.color = Color.green;
+                //animator.SetBool("Walk", false);
+
+            }
             else
+            {
+
                 enemyBoxer.indicator4_Body.material.color = Color.red;
+            }
         }
     }
 

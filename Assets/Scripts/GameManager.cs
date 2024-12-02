@@ -6,15 +6,20 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
+using System.Threading;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager manager;
 
+    public bool PlayerPaused = false;
+    public bool EnemyPaused = false;
+
 
     public TMP_Text RoundField;
     public TMP_Text TimerField;
+    public TMP_Text KnockOutTimerTextField;
 
     public bool InBattle;
 
@@ -41,9 +46,9 @@ public class GameManager : MonoBehaviour
     public int enemyKnockoutsThisRound; // how many times the ENEMY has been knockouted
     public int enemyKnockoutsTotal;
 
-    public bool Level1;
-    public bool Level2;
-    public bool Level3;
+    //public bool Level1;
+    //public bool Level2;
+    //public bool Level3;
 
     private void Awake()
     {
@@ -75,19 +80,8 @@ public class GameManager : MonoBehaviour
     {
         if(InBattle)
         {
-            FightTimer += Time.deltaTime;
-
-            TimerField.text =  "Time: " + Math.Floor(FightTimer).ToString();
-
-
-
-            if (FightTimer >= 180)
-            {
-                FightTimer = 0;
-                round += 1;
-                RoundField.text = "Round: " + round.ToString();
-                // next round, insert function here
-            }
+            if(!PlayerPaused || !EnemyPaused)
+                MatchTimer();
             
 
 
@@ -100,6 +94,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void MatchTimer()
+    {
+        FightTimer += Time.deltaTime;
+
+        TimerField.text = "Time: " + Math.Floor(FightTimer).ToString();
+
+
+
+        if (FightTimer >= 180)
+        {
+            FightTimer = 0;
+            round += 1;
+            RoundField.text = "Round: " + round.ToString();
+            // next round, insert function here
+        }
+    }
+
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -109,9 +120,9 @@ public class GameManager : MonoBehaviour
         data.health = health;
         data.previousHealth = previousHealth;
         data.maxHealth = maxHealth;
-        data.Level1 = Level1;
-        data.Level2 = Level2;
-        data.Level3 = Level3;
+        //data.Level1 = Level1;
+        //data.Level2 = Level2;
+        //data.Level3 = Level3;
         bf.Serialize(file, data);
         file.Close();
 
@@ -134,9 +145,9 @@ public class GameManager : MonoBehaviour
             health = data.health;
             previousHealth = data.previousHealth;
             maxHealth = data.maxHealth;
-            Level1 = data.Level1;
-            Level2 = data.Level2;
-            Level3 = data.Level3;
+            //Level1 = data.Level1;
+            //Level2 = data.Level2;
+            //Level3 = data.Level3;
         }
     }
 }

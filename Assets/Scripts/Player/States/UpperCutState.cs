@@ -18,7 +18,7 @@ public class UpperCutState : IPlayerState // AKA player special attack
     {
         timer += Time.deltaTime;
 
-        if (timer > 0.5f) // hard coded jab time
+        if (timer > 1f) // hard coded jab time
         {
             enemyBoxer.currentState.ToHurtState(player.PlayerSpecialAttackDamage, 2); // special state will have to check for it
             player.currentState = player.neutralState;

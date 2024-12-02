@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class EnemyKnockoutState : IEnemyStateBoxer
 
     public void UpdateState()
     {
+        GameManager.manager.PlayerPaused = true;
         enemyBoxer.indicator1.material.color = Color.black;
         enemyBoxer.indicator2.material.color = Color.black;
         enemyBoxer.indicator3.material.color = Color.black;
@@ -33,10 +35,18 @@ public class EnemyKnockoutState : IEnemyStateBoxer
 
 
         timer += Time.deltaTime;
-        if(timer > 3 * GameManager.manager.enemyKnockoutsThisRound && GameManager.manager.enemyKnockoutsThisRound <3 )
+        GameManager.manager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
+
+
+
+
+        if (timer > 3 * GameManager.manager.enemyKnockoutsThisRound && GameManager.manager.enemyKnockoutsThisRound <3 )
         {
             GameManager.manager.enemyHealth = (float)(GameManager.manager.enemyMaxHealth * (0.3 * (3 - GameManager.manager.enemyKnockoutsThisRound)));
             timer = 0;
+            GameManager.manager.PlayerPaused = false;
+            GameManager.manager.KnockOutTimerTextField.text = "";
+
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState;
         }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class NeutralState : IPlayerState
 {
     private StatePatternPlayer player;
-
+    public const string STATE_ANIMATION = "PlayerIdle";
 
     public NeutralState(StatePatternPlayer statePatternPlayer)
     {
@@ -15,6 +15,16 @@ public class NeutralState : IPlayerState
 
     public void UpdateState()
     {
+        //player._Animator.Play(PLAYER_IDLE);
+        /*
+        if(player.currentAnimationState != STATE_ANIMATION)
+        {
+            player._animator.Play(STATE_ANIMATION);
+            player.currentAnimationState = STATE_ANIMATION;
+        }
+        */
+        player._animator.SetTrigger("Idle");
+
 
         player.indicator1.material.color = Color.white;
         player.indicator2.material.color = Color.white;
@@ -25,6 +35,7 @@ public class NeutralState : IPlayerState
         if (Input.GetKeyDown("z") && !Input.GetKey("up"))
         {
             player.indicator1.material.color = Color.green;
+            player._animator.SetTrigger("BodyBlowLeft");
             player.currentState = player.lJabState;
             return;
         }
@@ -32,6 +43,8 @@ public class NeutralState : IPlayerState
         if (Input.GetKeyDown("x") && !Input.GetKey("up"))
         {
             player.indicator2.material.color = Color.green;
+            player._animator.SetTrigger("BodyBlowRight");
+
             player.currentState = player.rJabState;
             return;
         }
@@ -39,13 +52,18 @@ public class NeutralState : IPlayerState
         if (Input.GetKeyDown("z") && Input.GetKey("up"))
         {
             player.indicator1.material.color = Color.red;
+            player._animator.SetTrigger("JabLeft");
             player.currentState = player.lUpJabState;
             return;
         }
 
+
+
         if (Input.GetKeyDown("x") && Input.GetKey("up"))
         {
             player.indicator2.material.color = Color.red;
+            player._animator.SetTrigger("JabRight");
+
             player.currentState = player.rUpjabState;
             return;
         }
@@ -58,6 +76,8 @@ public class NeutralState : IPlayerState
             player.indicator1.material.color = Color.red;
             player.indicator2.material.color = Color.red;
             player.indicator3.material.color = Color.red;
+            player._animator.SetTrigger("UpperCut");
+
             player.currentState = player.upperCutState;
             return;
         }
@@ -65,6 +85,8 @@ public class NeutralState : IPlayerState
         if (Input.GetKey("c")) // block
         {
             player.indicator3.material.color = Color.yellow;
+            player._animator.ResetTrigger("ReturnToIdle");
+            player._animator.SetTrigger("Block");
             player.currentState = player.blockState;
             return;
         }
@@ -74,6 +96,8 @@ public class NeutralState : IPlayerState
         {
             player.indicator1.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
+            player._animator.SetTrigger("DodgeLeft");
+
             player.currentState = player.leftDodgeState;
             return;
         }
@@ -82,6 +106,8 @@ public class NeutralState : IPlayerState
         {
             player.indicator2.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
+            player._animator.SetTrigger("DodgeRight");
+
             player.currentState = player.rightDodgeState;
             return;
         }
@@ -91,6 +117,8 @@ public class NeutralState : IPlayerState
             player.indicator1.material.color = Color.blue;
             player.indicator2.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
+            player._animator.SetTrigger("Duck");
+
             player.currentState = player.duckState;
             return;
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class LUpJabState : IPlayerState
@@ -7,6 +8,7 @@ public class LUpJabState : IPlayerState
     float timer = 0;
     private StatePatternPlayer player;
     private StatePatternEnemyBoxer enemyBoxer;
+    public const string STATE_ANIMATION = "PlayerJabLeft";
 
 
     public LUpJabState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
@@ -16,9 +18,21 @@ public class LUpJabState : IPlayerState
     }
     public void UpdateState()
     {
+        if (player.currentAnimationState != STATE_ANIMATION)
+        {
+            //player._animator.Play(STATE_ANIMATION);
+            //animator.CrossFade(“State Name”, fadeDuration);
+            //player._animator.CrossFade(STATE_ANIMATION, 0.1f);
+            player.currentAnimationState = STATE_ANIMATION;
+            //animator.SetBool("Walk", false); // THIS IS BETTER
+        }
+
+
+
+
         timer += Time.deltaTime;
 
-        if (timer > 0.5f) // hard coded jab time
+        if (timer > 0.3f) // hard coded jab time
         {
             enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage,0);
             player.currentState = player.neutralState;

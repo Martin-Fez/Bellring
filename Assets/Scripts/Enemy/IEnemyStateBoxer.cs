@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IEnemyStateBoxer
 {
 
+
     /*
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public interface IEnemyStateBoxer
     }
 
     */
+
+
     void UpdateState();
 
 

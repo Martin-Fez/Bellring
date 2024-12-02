@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockState : IPlayerState
 {
-    float timer = 0;
+    //float timer = 0;
     private StatePatternPlayer player;
 
 
@@ -14,12 +14,15 @@ public class BlockState : IPlayerState
     }
     public void UpdateState()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
-        if (timer > 0.5f) // hard coded jab time
+
+        if (Input.GetKeyUp("c") || GameManager.manager.hearts == 0) // add running out of hearts as a condition
         {
+            player._animator.SetTrigger("ReturnToIdle");
             player.currentState = player.neutralState;
-            timer = 0;
+
+            //timer = 0;
         }
     }
 
