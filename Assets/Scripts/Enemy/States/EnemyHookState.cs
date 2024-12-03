@@ -26,8 +26,11 @@ public class EnemyHookState : IEnemyStateBoxer
         //if ( (lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower || timer >  ) && timer > 0.1f)) // if uppercut or lowerattack and block do not match
         if ( (lowerAttack == 2 || timer > 0.3f)  && !hasBlocked) // if  timer is not above 0.1 he will block
         {
-            //timer = 0;
+            timer = 0;
             enemyBoxer.TakeDamage(damage);
+            enemyBoxer.hitsBeforeSwitch = 5;
+            enemyBoxer.hasBeenHit = true;
+
             enemyBoxer._animator.SetTrigger("Hurt");
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
@@ -47,20 +50,20 @@ public class EnemyHookState : IEnemyStateBoxer
 
     public void UpdateState()
     {
-        Debug.Log("hook state");
+        //Debug.Log("hook state");
 
         timer += Time.deltaTime;
         enemyBoxer.indicator1.material.color = Color.cyan;
         enemyBoxer.indicator2.material.color = Color.cyan;
         enemyBoxer.indicator3.material.color = Color.cyan;
 
-        if (timer > 1f) // hard coded hurt state, change later
+        if (timer > 0.8f) // hard coded hurt state, change later
         {
             //player.currentState = player.neutralState;
             //CalculateBlockingSwitch();
 
 
-
+            player.currentState.ToHurtState(11);
             timer = 0;
             hasBlocked = false;
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER

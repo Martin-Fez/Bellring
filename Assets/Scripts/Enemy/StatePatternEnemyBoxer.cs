@@ -20,6 +20,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
 
 
     public int hitsBeforeSwitch; // how many hits can the boxer take before he starts blocking there
+    public bool hasBeenHit = false;
 
     public bool blockingLower;
 
@@ -65,7 +66,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         enemyBlockState = new EnemyBlockState(player, this);
         enemyHookState = new EnemyHookState(player, this);
         enemyHurtState = new EnemyHurtState(player,this);
-        enemyJabState = new EnemyJabState();
+        enemyJabState = new EnemyJabState(player, this);
         enemyNeutralState = new EnemyNeutralState(player, this);
         enemySpecialState = new EnemySpecialState();
         enemyKnockoutState = new EnemyKnockoutState(player, this);

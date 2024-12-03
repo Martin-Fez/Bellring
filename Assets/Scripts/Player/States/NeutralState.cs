@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -128,8 +129,28 @@ public class NeutralState : IPlayerState
 
     }
 
-    public void ToHurtState()
+    public void ToHurtState(float damage)
     {
 
+        //timer = 0;
+        player._animator.SetTrigger("Hurt");
+        player.TakeDamage(damage);
+        player.currentState = player.hurtState;
+
+        /*
+        if (lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower)) // if uppercut or lowerattack and block do not match
+        {
+            //timer = 0;
+            enemyBoxer.TakeDamage(damage);
+            enemyBoxer._animator.SetTrigger("Hurt");
+            enemyBoxer.currentState = enemyBoxer.enemyHurtState;
+        }
+        else
+        {
+            enemyBoxer._animator.SetTrigger("Block");
+
+            enemyBoxer.currentState = enemyBoxer.enemyBlockState;
+        }
+        */
     }
 }

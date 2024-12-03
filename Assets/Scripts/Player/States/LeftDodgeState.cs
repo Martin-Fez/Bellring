@@ -23,8 +23,24 @@ public class LeftDodgeState : IPlayerState
         }
     }
 
-    public void ToHurtState()
+    public void ToHurtState(float damage) // may need a second variable for future attacks
     {
+        if (timer < 0.1f) // we are too slow
+        {
+            timer = 0;
+            player._animator.SetTrigger("Hurt");
+            player.TakeDamage(damage);
+            player.currentState = player.hurtState;
+        }
+        else
+        {
+            // we dodged, return
+            if (GameManager.manager.hearts <= 0)
+                GameManager.manager.hearts = 15;
+
+            return;
+
+        }
 
     }
 }

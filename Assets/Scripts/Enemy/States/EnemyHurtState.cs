@@ -61,6 +61,7 @@ public class EnemyHurtState : IEnemyStateBoxer
         enemyBoxer.hitsBeforeSwitch -= 1;
         if (enemyBoxer.hitsBeforeSwitch == 0)
         {
+            enemyBoxer.hasBeenHit = false;
             enemyBoxer.hitsBeforeSwitch = 2; // will change
             enemyBoxer.blockingLower = !enemyBoxer.blockingLower;
             enemyBoxer._animator.SetBool("BlockLow", enemyBoxer.blockingLower);

@@ -26,8 +26,19 @@ public class BlockState : IPlayerState
         }
     }
 
-    public void ToHurtState()
+
+    public void ToHurtState(float damage)
     {
+
+        //timer = 0;
+        //player._animator.SetTrigger("Hurt");
+        //player.TakeDamage(damage);
+        //player.currentState = player.hurtState;
+        
+        // could make an extra animation here
+        GameManager.manager.hearts--;
+
+        return;
 
     }
 }

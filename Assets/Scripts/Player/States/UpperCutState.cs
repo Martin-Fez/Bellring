@@ -26,8 +26,14 @@ public class UpperCutState : IPlayerState // AKA player special attack
         }
     }
 
-    public void ToHurtState()
+
+    public void ToHurtState(float damage)
     {
+
+        timer = 0;
+        player._animator.SetTrigger("Hurt");
+        player.TakeDamage(damage);
+        player.currentState = player.hurtState;
 
     }
 }

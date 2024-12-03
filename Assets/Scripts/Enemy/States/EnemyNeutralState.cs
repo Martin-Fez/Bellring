@@ -22,7 +22,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
     public void ToHurtState(float damage, int lowerAttack)
     {
 
-        if( lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower)) // if uppercut or lowerattack and block do not match
+        if( lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower) || enemyBoxer.hasBeenHit) // if uppercut or lowerattack and block do not match
         {
             //timer = 0;
             enemyBoxer.TakeDamage(damage);
@@ -44,7 +44,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
         //timer += Time.deltaTime; // standart
         timer = GameManager.manager.FightTimer;
-        timer = timer % 5;
+        timer = timer % 8;
         enemyBoxer.indicator1.material.color = Color.white;
         enemyBoxer.indicator2.material.color = Color.white;
         enemyBoxer.indicator3.material.color = Color.white;
@@ -61,6 +61,16 @@ public class EnemyNeutralState : IEnemyStateBoxer
             enemyBoxer.currentState = enemyBoxer.enemyHookState;
 
             //enemyBoxer
+
+        }
+
+
+        if(timer > 6f && timer < 6.1f)
+        {
+            enemyBoxer.indicator3.material.color = Color.red;
+            enemyBoxer._animator.ResetTrigger("Jab");
+            enemyBoxer._animator.SetTrigger("Jab");
+            enemyBoxer.currentState = enemyBoxer.enemyJabState;
 
         }
         else

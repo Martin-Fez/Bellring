@@ -15,6 +15,9 @@ public class HurtState : IPlayerState
     public void UpdateState()
     {
         timer += Time.deltaTime;
+        player.indicator1.material.color = Color.red;
+        player.indicator2.material.color = Color.red;
+        player.indicator3.material.color = Color.red;
 
         if (timer > 0.5f) // hard coded jab time
         {
@@ -23,8 +26,8 @@ public class HurtState : IPlayerState
         }
     }
 
-    public void ToHurtState()
+    public void ToHurtState(float damage)
     {
-
+        // cannot enter this
     }
 }
