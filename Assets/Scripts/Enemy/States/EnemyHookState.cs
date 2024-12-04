@@ -66,6 +66,8 @@ public class EnemyHookState : IEnemyStateBoxer
             player.currentState.ToHurtState(11);
             timer = 0;
             hasBlocked = false;
+
+            enemyBoxer.hitsBeforeSwitch = 4;
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
         }
     }

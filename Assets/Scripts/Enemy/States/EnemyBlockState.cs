@@ -19,7 +19,9 @@ public class EnemyBlockState : IEnemyStateBoxer
 
     public void ToHurtState(float damage, int lowerAttack)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("funny attack block");
+        return; //Nothing happens
+        //throw new System.NotImplementedException();
     }
 
     public void UpdateState()
@@ -35,7 +37,7 @@ public class EnemyBlockState : IEnemyStateBoxer
             //CalculateBlockingSwitch();
 
 
-
+            enemyBoxer.hitsBeforeSwitch = 2;
             timer = 0;
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
         }

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int round = 1;
 
 
-
+    /*
     public float health;// current health left
     public float previousHealth; // before we took damage
     public float maxHealth; // max hp
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public int hearts;
     public int knockoutsThisRound; // how many times the PLAYER has been knockedouted
     public int knockoutsTotal;
+    */
 
 
     public float enemyHealth;
@@ -117,9 +118,9 @@ public class GameManager : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData data = new PlayerData();
         // copy information from Game Manager to Player data
-        data.health = health;
-        data.previousHealth = previousHealth;
-        data.maxHealth = maxHealth;
+        //data.health = health;
+        //data.previousHealth = previousHealth;
+        //data.maxHealth = maxHealth;
         //data.Level1 = Level1;
         //data.Level2 = Level2;
         //data.Level3 = Level3;
@@ -142,9 +143,9 @@ public class GameManager : MonoBehaviour
             file.Close();
 
             // Move the information to Game Manager
-            health = data.health;
-            previousHealth = data.previousHealth;
-            maxHealth = data.maxHealth;
+           // health = data.health;
+            //previousHealth = data.previousHealth;
+            //maxHealth = data.maxHealth;
             //Level1 = data.Level1;
             //Level2 = data.Level2;
             //Level3 = data.Level3;

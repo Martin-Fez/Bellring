@@ -17,7 +17,7 @@ public class BlockState : IPlayerState
         //timer += Time.deltaTime;
 
 
-        if (Input.GetKeyUp("c") || GameManager.manager.hearts == 0) // add running out of hearts as a condition
+        if (Input.GetKeyUp("c") || player.hearts == 0) // add running out of hearts as a condition
         {
             player._animator.SetTrigger("ReturnToIdle");
             player.currentState = player.neutralState;
@@ -36,7 +36,7 @@ public class BlockState : IPlayerState
         //player.currentState = player.hurtState;
         
         // could make an extra animation here
-        GameManager.manager.hearts--;
+        player.hearts--;
 
         return;
 

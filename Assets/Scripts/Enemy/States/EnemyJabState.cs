@@ -26,7 +26,7 @@ public class EnemyJabState : IEnemyStateBoxer
         {
             timer = 0;
             enemyBoxer.TakeDamage(damage);
-            enemyBoxer.hitsBeforeSwitch = 5;
+            enemyBoxer.hitsBeforeSwitch = 6;
             enemyBoxer.hasBeenHit = true;
 
             enemyBoxer._animator.SetTrigger("Hurt");
@@ -65,6 +65,10 @@ public class EnemyJabState : IEnemyStateBoxer
             player.currentState.ToHurtState(11);
             timer = 0;
             hasBlocked = false;
+
+            enemyBoxer.hitsBeforeSwitch = 4;
+
+            // NEW STATE?
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState; // REMOVE LATER
         }
     }

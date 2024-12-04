@@ -34,7 +34,13 @@ public class LUpJabState : IPlayerState
 
         if (timer > 0.3f) // hard coded jab time
         {
-            enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage,0);
+            if (!player.LastPunchLeft)
+                enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage * 1.5f, 0);
+            else;
+                enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage, 0);
+
+            player.LastPunchLeft = true;
+
             player.currentState = player.neutralState;
             timer = 0;
         }

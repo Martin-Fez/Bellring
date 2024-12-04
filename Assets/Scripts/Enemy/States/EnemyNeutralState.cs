@@ -39,7 +39,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
     public void UpdateState()
     {
-        Debug.Log("Neutral state");
+        //Debug.Log("Neutral state");
 
 
         //timer += Time.deltaTime; // standart

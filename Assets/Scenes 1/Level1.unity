@@ -1060,9 +1060,16 @@ MonoBehaviour:
   _animator: {fileID: 0}
   currentAnimationState: 
   enemyBoxer: {fileID: 832886408}
-  hearts: 30
   filler: {fileID: 0}
+  LastPunchLeft: 0
   healthField: {fileID: 1963640002}
+  health: 100
+  previousHealth: 100
+  maxHealth: 100
+  stars: 0
+  hearts: 30
+  knockoutsThisRound: 0
+  knockoutsTotal: 0
 --- !u!95 &758720792
 Animator:
   serializedVersion: 5
@@ -1346,6 +1353,7 @@ MonoBehaviour:
   indicator4_Body: {fileID: 600068564}
   _animator: {fileID: 0}
   hitsBeforeSwitch: 2
+  hasBeenHit: 0
   blockingLower: 0
   filler: {fileID: 0}
   player: {fileID: 758720791}

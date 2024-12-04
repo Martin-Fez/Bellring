@@ -40,8 +40,11 @@ public class DuckState : IPlayerState
         else
         {
             // we dodged, return
-            if(GameManager.manager.hearts <= 0)
-                GameManager.manager.hearts = 15;
+            //if(GameManager.manager.hearts <= 0)
+              //  GameManager.manager.hearts = 15;
+
+            if (player.hearts <= 0)
+                player.hearts = 20;
 
             return;
 

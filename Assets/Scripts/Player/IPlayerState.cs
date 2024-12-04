@@ -24,4 +24,9 @@ public interface IPlayerState
 
     // checks if we switch to hurtState, if yes, reset any values and change state to hurt state
     void ToHurtState(float damage);
+
+
+    //void removeStar();
+
+    //void removeHeart();
 }

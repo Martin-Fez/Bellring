@@ -19,12 +19,28 @@ public class EnemyHurtState : IEnemyStateBoxer
 
     public void ToHurtState(float damage, int lowerAttack)
     {
-        throw new System.NotImplementedException();
+        timer = 0;
+        enemyBoxer._animator.ResetTrigger("Hurt");
+        enemyBoxer._animator.SetTrigger("Hurt");
+
+
+
+
+        Debug.Log("Too fast today huh");
+        return; //Nothing happens
+
+        //throw new System.NotImplementedException();
     }
 
     public void UpdateState()
     {
         Debug.Log("hurt state");
+
+
+        // NOT MEANT TO BE HERE
+        //if (GameManager.manager.hearts <= 0)
+          //  GameManager.manager.hearts = 15;
+
 
 
         timer += Time.deltaTime;

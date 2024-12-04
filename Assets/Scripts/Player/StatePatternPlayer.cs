@@ -29,14 +29,29 @@ public class StatePatternPlayer : MonoBehaviour
     public StatePatternEnemyBoxer enemyBoxer; // hope this works
 
 
-    public int hearts = 30; // if this hits 0, player becomes tired
+    //public int hearts = 30; // if this hits 0, player becomes tired
 
     public Image filler; // this is the image. we\ll adjust fillamount value
+
+    public bool LastPunchLeft = false; // could be better but leave as is
+
+
+    //public bool lowPunch; // will later try to modify it so player keeps punching a certain position
 
     //public string playerName;
 
     public TMP_Text healthField;
     //public TMP_Text nameField;
+
+
+    public float health;// current health left
+    public float previousHealth; // before we took damage
+    public float maxHealth; // max hp
+    public int stars;
+    public int hearts;
+    public int knockoutsThisRound; // how many times the PLAYER has been knockedouted
+    public int knockoutsTotal;
+
 
 
     //[HideInInspector] public Transform chaseTarget; // This is what we chase in chase state. Usually Player.
@@ -52,6 +67,7 @@ public class StatePatternPlayer : MonoBehaviour
     [HideInInspector] public LUpJabState lUpJabState;
     [HideInInspector] public UpperCutState upperCutState;
     [HideInInspector] public HurtState hurtState;
+    [HideInInspector] public PlayerKnockOutState knockOutState;
 
 
     private void Awake()
@@ -70,10 +86,11 @@ public class StatePatternPlayer : MonoBehaviour
         lUpJabState = new LUpJabState(this, enemyBoxer);
         upperCutState = new UpperCutState(this, enemyBoxer);
         hurtState = new HurtState(this);
+        knockOutState = new PlayerKnockOutState(this,enemyBoxer);
         // maybe add a state where player is hit
 
 
-    //trackingState = new TrackingState(this);
+        //trackingState = new TrackingState(this);
     }
 
     // Start is called before the first frame update
@@ -108,7 +125,7 @@ public class StatePatternPlayer : MonoBehaviour
 
     public void UpdateManager()
     {
-        healthField.text = "player health: " + GameManager.manager.health.ToString();
+        healthField.text = "player health: " + health.ToString();
     }
 
 
@@ -117,7 +134,7 @@ public class StatePatternPlayer : MonoBehaviour
     {
         //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
         //counter = 0;
-        GameManager.manager.health -= damage;
+        health -= damage;
     }
     
 
