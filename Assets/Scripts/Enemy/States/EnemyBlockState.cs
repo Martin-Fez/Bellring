@@ -19,6 +19,8 @@ public class EnemyBlockState : IEnemyStateBoxer
 
     public void ToHurtState(float damage, int lowerAttack)
     {
+
+        player.hearts -= 1;
         Debug.Log("funny attack block");
         return; //Nothing happens
         //throw new System.NotImplementedException();

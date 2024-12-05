@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public int hearts;
     public int knockoutsThisRound; // how many times the PLAYER has been knockedouted
     public int knockoutsTotal;
-    */
+    
 
 
     public float enemyHealth;
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public float enemyMaxHealth;
     public int enemyKnockoutsThisRound; // how many times the ENEMY has been knockouted
     public int enemyKnockoutsTotal;
+
+    */
 
     //public bool Level1;
     //public bool Level2;

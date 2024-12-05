@@ -17,7 +17,7 @@ public class BlockState : IPlayerState
         //timer += Time.deltaTime;
 
 
-        if (Input.GetKeyUp("c") || player.hearts == 0) // add running out of hearts as a condition
+        if (Input.GetKeyUp("c") || player.hearts <= 0) // add running out of hearts as a condition
         {
             player._animator.SetTrigger("ReturnToIdle");
             player.currentState = player.neutralState;

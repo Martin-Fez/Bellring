@@ -17,6 +17,7 @@ public class StatePatternPlayer : MonoBehaviour
     public MeshRenderer indicator1;
     public MeshRenderer indicator2;
     public MeshRenderer indicator3;
+    public MeshRenderer indicator4_Body;
 
 
 
@@ -41,6 +42,8 @@ public class StatePatternPlayer : MonoBehaviour
     //public string playerName;
 
     public TMP_Text healthField;
+    public TMP_Text StarField;
+    public TMP_Text HeartField;
     //public TMP_Text nameField;
 
 
@@ -125,7 +128,13 @@ public class StatePatternPlayer : MonoBehaviour
 
     public void UpdateManager()
     {
+        if (hearts < 0)
+            hearts = 0;
+
+
         healthField.text = "player health: " + health.ToString();
+        StarField.text = "Stars: " + stars.ToString();
+        HeartField.text = "hearts: " + hearts.ToString();
     }
 
 

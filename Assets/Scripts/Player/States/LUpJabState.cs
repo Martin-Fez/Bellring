@@ -36,13 +36,13 @@ public class LUpJabState : IPlayerState
         {
             if (!player.LastPunchLeft)
                 enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage * 1.5f, 0);
-            else;
+            else
                 enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage, 0);
 
             player.LastPunchLeft = true;
 
-            player.currentState = player.neutralState;
             timer = 0;
+            player.currentState = player.neutralState;
         }
     }
 

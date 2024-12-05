@@ -34,6 +34,7 @@ public class EnemyJabState : IEnemyStateBoxer
         }
         else // block logic, works diffrent for attacks
         {
+            player.hearts -= 1;
             enemyBoxer.indicator1.material.color = Color.red;
             enemyBoxer.indicator2.material.color = Color.red;
             enemyBoxer.indicator3.material.color = Color.red;

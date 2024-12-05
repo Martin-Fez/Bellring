@@ -8,6 +8,9 @@ public class NeutralState : IPlayerState
     private StatePatternPlayer player;
     public const string STATE_ANIMATION = "PlayerIdle";
 
+    Color pinkColor = new Color32(232, 0, 254, 1);
+
+
     public NeutralState(StatePatternPlayer statePatternPlayer)
     {
         player = statePatternPlayer;
@@ -27,9 +30,23 @@ public class NeutralState : IPlayerState
         player._animator.SetTrigger("Idle");
 
 
-        player.indicator1.material.color = Color.white;
-        player.indicator2.material.color = Color.white;
-        player.indicator3.material.color = Color.white;
+        if(player.hearts <= 0)
+        {
+            player.indicator1.material.color = pinkColor;
+            player.indicator2.material.color = pinkColor;
+            player.indicator3.material.color = pinkColor;
+            player.indicator4_Body.material.color = pinkColor;
+        }
+        else
+        {
+            player.indicator1.material.color = Color.white;
+            player.indicator2.material.color = Color.white;
+            player.indicator3.material.color = Color.white;
+            player.indicator4_Body.material.color = Color.white;
+        }
+
+
+
 
         //attacks
 
@@ -72,7 +89,7 @@ public class NeutralState : IPlayerState
 
         // non attack segment
 
-        if (Input.GetKeyDown("space")) // uppercut
+        if (Input.GetKeyDown("space") && player.stars > 0) // uppercut
         {
             player.indicator1.material.color = Color.red;
             player.indicator2.material.color = Color.red;
@@ -83,7 +100,7 @@ public class NeutralState : IPlayerState
             return;
         }
 
-        if (Input.GetKey("c")) // block
+        if (Input.GetKey("c") && player.hearts > 0) // block
         {
             player.indicator3.material.color = Color.yellow;
             player._animator.ResetTrigger("ReturnToIdle");

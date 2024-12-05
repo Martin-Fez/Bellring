@@ -40,9 +40,9 @@ public class EnemyKnockoutState : IEnemyStateBoxer
 
 
 
-        if (timer > 3 * GameManager.manager.enemyKnockoutsThisRound && GameManager.manager.enemyKnockoutsThisRound <3 )
+        if (timer > 3 * enemyBoxer.enemyKnockoutsThisRound && enemyBoxer.enemyKnockoutsThisRound <3 )
         {
-            GameManager.manager.enemyHealth = (float)(GameManager.manager.enemyMaxHealth * (0.3 * (3 - GameManager.manager.enemyKnockoutsThisRound)));
+            enemyBoxer.enemyHealth = (float)(enemyBoxer.enemyMaxHealth * (0.3 * (3 - enemyBoxer.enemyKnockoutsThisRound)));
             timer = 0;
             GameManager.manager.PlayerPaused = false;
             GameManager.manager.KnockOutTimerTextField.text = "";

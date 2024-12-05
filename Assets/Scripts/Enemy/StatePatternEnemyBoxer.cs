@@ -36,6 +36,14 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     //public TMP_Text nameField;
 
 
+
+    public float enemyHealth;
+    public float enemyPreviousHealth;
+    public float enemyMaxHealth;
+    public int enemyKnockoutsThisRound; // how many times the ENEMY has been knockouted
+    public int enemyKnockoutsTotal;
+
+
     //[HideInInspector] public Transform chaseTarget; // This is what we chase in chase state. Usually Player.
     [HideInInspector] public IEnemyStateBoxer currentState;
     [HideInInspector] public EnemyBlockState enemyBlockState;
@@ -104,14 +112,14 @@ public class StatePatternEnemyBoxer : MonoBehaviour
 
     public void UpdateManager()
     {
-        healthField.text = "Enemy Health: " + GameManager.manager.enemyHealth.ToString();
+        healthField.text = "Enemy Health: " + enemyHealth.ToString();
     }
 
     public void TakeDamage(float damage)
     {
         //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
         //counter = 0;
-        GameManager.manager.enemyHealth -= damage;
+        enemyHealth -= damage;
     }
 
 }

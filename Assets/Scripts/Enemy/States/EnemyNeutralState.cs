@@ -31,6 +31,9 @@ public class EnemyNeutralState : IEnemyStateBoxer
         }
         else
         {
+        Debug.Log("BLock neutral");
+
+            player.hearts -= 1;
             enemyBoxer._animator.SetTrigger("Block");
 
             enemyBoxer.currentState = enemyBoxer.enemyBlockState;

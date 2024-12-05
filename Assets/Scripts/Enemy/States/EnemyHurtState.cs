@@ -34,7 +34,7 @@ public class EnemyHurtState : IEnemyStateBoxer
 
     public void UpdateState()
     {
-        Debug.Log("hurt state");
+        //Debug.Log("hurt state");
 
 
         // NOT MEANT TO BE HERE
@@ -55,10 +55,10 @@ public class EnemyHurtState : IEnemyStateBoxer
             timer = 0;
 
 
-            if(GameManager.manager.enemyHealth <= 0)
+            if(enemyBoxer.enemyHealth <= 0)
             {
-                GameManager.manager.enemyKnockoutsThisRound += 1;
-                GameManager.manager.enemyKnockoutsTotal += 1;
+                enemyBoxer.enemyKnockoutsThisRound += 1;
+                enemyBoxer.enemyKnockoutsTotal += 1;
                 enemyBoxer.currentState = enemyBoxer.enemyKnockoutState;
                 return; // without return it continues
                 //Debug.Log("THIS SHOULD NOT SHOW");
