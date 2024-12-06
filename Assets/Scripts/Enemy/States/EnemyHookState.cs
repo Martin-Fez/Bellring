@@ -26,12 +26,15 @@ public class EnemyHookState : IEnemyStateBoxer
         //if ( (lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower || timer >  ) && timer > 0.1f)) // if uppercut or lowerattack and block do not match
         if ( (lowerAttack == 2 || timer > 0.3f)  && !hasBlocked) // if  timer is not above 0.1 he will block
         {
-            timer = 0;
             enemyBoxer.TakeDamage(damage);
             enemyBoxer.hitsBeforeSwitch = 5;
             enemyBoxer.hasBeenHit = true;
 
+            if (lowerAttack != 2 && timer < 0.5)
+                player.stars++;
+
             enemyBoxer._animator.SetTrigger("Hurt");
+            timer = 0;
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
         else // block logic, works diffrent for attacks

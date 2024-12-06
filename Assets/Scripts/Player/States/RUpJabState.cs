@@ -41,6 +41,8 @@ public class RUpJabState : IPlayerState
         timer = 0;
         player._animator.SetTrigger("Hurt");
         player.TakeDamage(damage);
+        player.hearts--;
+
         player.currentState = player.hurtState;
 
     }

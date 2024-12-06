@@ -57,6 +57,7 @@ public class EnemyHurtState : IEnemyStateBoxer
 
             if(enemyBoxer.enemyHealth <= 0)
             {
+                enemyBoxer.enemyHealth = 0;
                 enemyBoxer.enemyKnockoutsThisRound += 1;
                 enemyBoxer.enemyKnockoutsTotal += 1;
                 enemyBoxer.currentState = enemyBoxer.enemyKnockoutState;

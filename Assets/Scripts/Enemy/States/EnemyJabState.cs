@@ -24,12 +24,15 @@ public class EnemyJabState : IEnemyStateBoxer
         //if ( (lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower || timer >  ) && timer > 0.1f)) // if uppercut or lowerattack and block do not match
         if ((lowerAttack == 2 || timer > 0.3f) && !hasBlocked) // if  timer is not above 0.1 he will block
         {
-            timer = 0;
             enemyBoxer.TakeDamage(damage);
             enemyBoxer.hitsBeforeSwitch = 6;
             enemyBoxer.hasBeenHit = true;
 
+            if (lowerAttack != 2 && timer < 0.5)
+                player.stars++;
+
             enemyBoxer._animator.SetTrigger("Hurt");
+            timer = 0;
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
         else // block logic, works diffrent for attacks
@@ -63,7 +66,7 @@ public class EnemyJabState : IEnemyStateBoxer
 
 
             //enemyBoxer.currentState.ToHurtState(player.playerStandartAttackDamage, 1);
-            player.currentState.ToHurtState(11);
+            player.currentState.ToHurtState(20);
             timer = 0;
             hasBlocked = false;
 

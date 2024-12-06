@@ -28,6 +28,7 @@ public class LeftDodgeState : IPlayerState
         if (timer < 0.1f) // we are too slow
         {
             timer = 0;
+            player.hearts--;
             player._animator.SetTrigger("Hurt");
             player.TakeDamage(damage);
             player.currentState = player.hurtState;

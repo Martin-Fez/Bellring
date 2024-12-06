@@ -76,7 +76,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         enemyHurtState = new EnemyHurtState(player,this);
         enemyJabState = new EnemyJabState(player, this);
         enemyNeutralState = new EnemyNeutralState(player, this);
-        enemySpecialState = new EnemySpecialState();
+        enemySpecialState = new EnemySpecialState(player,this);
         enemyKnockoutState = new EnemyKnockoutState(player, this);
 
     }

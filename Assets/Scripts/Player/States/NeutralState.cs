@@ -50,7 +50,7 @@ public class NeutralState : IPlayerState
 
         //attacks
 
-        if (Input.GetKeyDown("z") && !Input.GetKey("up"))
+        if (Input.GetKeyDown("z") && !Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator1.material.color = Color.green;
             player._animator.SetTrigger("BodyBlowLeft");
@@ -58,7 +58,7 @@ public class NeutralState : IPlayerState
             return;
         }
 
-        if (Input.GetKeyDown("x") && !Input.GetKey("up"))
+        if (Input.GetKeyDown("x") && !Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator2.material.color = Color.green;
             player._animator.SetTrigger("BodyBlowRight");
@@ -67,7 +67,7 @@ public class NeutralState : IPlayerState
             return;
         }
 
-        if (Input.GetKeyDown("z") && Input.GetKey("up"))
+        if (Input.GetKeyDown("z") && Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator1.material.color = Color.red;
             player._animator.SetTrigger("JabLeft");
@@ -77,7 +77,7 @@ public class NeutralState : IPlayerState
 
 
 
-        if (Input.GetKeyDown("x") && Input.GetKey("up"))
+        if (Input.GetKeyDown("x") && Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator2.material.color = Color.red;
             player._animator.SetTrigger("JabRight");
@@ -87,10 +87,11 @@ public class NeutralState : IPlayerState
         }
 
 
-        // non attack segment
 
-        if (Input.GetKeyDown("space") && player.stars > 0) // uppercut
+        if (Input.GetKeyDown("space") && player.stars > 0 && player.hearts > 0) // uppercut
         {
+
+            player.stars--;
             player.indicator1.material.color = Color.red;
             player.indicator2.material.color = Color.red;
             player.indicator3.material.color = Color.red;
@@ -99,6 +100,7 @@ public class NeutralState : IPlayerState
             player.currentState = player.upperCutState;
             return;
         }
+        // non attack segment
 
         if (Input.GetKey("c") && player.hearts > 0) // block
         {
@@ -151,6 +153,7 @@ public class NeutralState : IPlayerState
 
         //timer = 0;
         player._animator.SetTrigger("Hurt");
+        player.hearts--;
         player.TakeDamage(damage);
         player.currentState = player.hurtState;
 

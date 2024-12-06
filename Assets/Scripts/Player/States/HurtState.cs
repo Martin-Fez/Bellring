@@ -22,6 +22,7 @@ public class HurtState : IPlayerState
         if (timer > 0.5f) 
         {
             timer = 0;
+            player.stars = 0;
 
 
             if (player.health <= 0)
@@ -40,6 +41,7 @@ public class HurtState : IPlayerState
 
     public void ToHurtState(float damage)
     {
+        player.hearts--;
         timer = 0;
         player._animator.ResetTrigger("Hurt");
         player._animator.SetTrigger("Hurt");

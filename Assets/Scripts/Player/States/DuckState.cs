@@ -32,6 +32,7 @@ public class DuckState : IPlayerState
     {
         if (timer < 0.1f) // we are too slow
         {
+            player.hearts--;
             timer = 0;
             player._animator.SetTrigger("Hurt");
             player.TakeDamage(damage);

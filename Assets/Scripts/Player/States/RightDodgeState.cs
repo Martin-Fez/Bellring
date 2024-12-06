@@ -29,6 +29,7 @@ public class RightDodgeState : IPlayerState
         {
             timer = 0;
             player._animator.SetTrigger("Hurt");
+            player.hearts--;
             player.TakeDamage(damage);
             player.currentState = player.hurtState;
         }

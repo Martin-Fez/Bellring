@@ -25,7 +25,8 @@ public class EnemyNeutralState : IEnemyStateBoxer
         if( lowerAttack == 2 || (Convert.ToBoolean(lowerAttack) != enemyBoxer.blockingLower) || enemyBoxer.hasBeenHit) // if uppercut or lowerattack and block do not match
         {
             //timer = 0;
-            enemyBoxer.TakeDamage(damage);
+
+            enemyBoxer.TakeDamage(damage); // BIG DAMAGE
             enemyBoxer._animator.SetTrigger("Hurt");
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
@@ -51,10 +52,14 @@ public class EnemyNeutralState : IEnemyStateBoxer
         enemyBoxer.indicator1.material.color = Color.white;
         enemyBoxer.indicator2.material.color = Color.white;
         enemyBoxer.indicator3.material.color = Color.white;
+        enemyBoxer.indicator4_Body.material.color = Color.white;
 
 
-        
+
         //if(timer > 3f && timer < 4f && !enemyBoxer.debug_Hit)
+
+        //*
+
         if(timer > 3f && timer < 3.1f)
         {
             //enemyBoxer.debug_Hit = true;
@@ -79,9 +84,20 @@ public class EnemyNeutralState : IEnemyStateBoxer
         else
             enemyBoxer.indicator3.material.color = Color.white;
 
+        //*/
+
+        if (timer > 7f && timer < 7.1f)
+        {
+            // insert other things here
+
+            enemyBoxer.currentState = enemyBoxer.enemySpecialState;
+
+
+        }
+
         //if (timer > 4f)
-            //enemyBoxer.debug_Hit = false;
-        
+        //enemyBoxer.debug_Hit = false;
+
 
 
 
