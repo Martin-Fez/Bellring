@@ -108,7 +108,8 @@ public class StatePatternPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.manager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
+        //if (GameManager.manager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
+        if (BattleManager.battleManager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
         {
             currentState = neutralState;
             return;

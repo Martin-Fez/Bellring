@@ -31,7 +31,7 @@ public class PlayerKnockOutState : IPlayerState
 
     public void UpdateState()
     {
-        GameManager.manager.EnemyPaused = true;
+        BattleManager.battleManager.EnemyPaused = true;
         player.indicator1.material.color = Color.black;
         player.indicator2.material.color = Color.black;
         player.indicator3.material.color = Color.black;
@@ -40,7 +40,7 @@ public class PlayerKnockOutState : IPlayerState
 
 
         timer += Time.deltaTime;
-        GameManager.manager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
+        BattleManager.battleManager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
 
         if (Input.GetKeyUp("space"))
             GetUpBar += 100;
@@ -77,8 +77,8 @@ public class PlayerKnockOutState : IPlayerState
               //  GameManager.manager.health = 1;
 
             timer = 0;
-            GameManager.manager.EnemyPaused = false;
-            GameManager.manager.KnockOutTimerTextField.text = "";
+            BattleManager.battleManager.EnemyPaused = false;
+            BattleManager.battleManager.KnockOutTimerTextField.text = "";
 
             player._animator.SetBool("KnockOut",false);
             player._animator.ResetTrigger("KnockOutTrigger");

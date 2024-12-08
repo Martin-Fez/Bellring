@@ -47,7 +47,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
 
         //timer += Time.deltaTime; // standart
-        timer = GameManager.manager.FightTimer;
+        timer = BattleManager.battleManager.FightTimer;
         timer = timer % 8;
         enemyBoxer.indicator1.material.color = Color.white;
         enemyBoxer.indicator2.material.color = Color.white;

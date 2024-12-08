@@ -25,7 +25,7 @@ public class EnemyKnockoutState : IEnemyStateBoxer
 
     public void UpdateState()
     {
-        GameManager.manager.PlayerPaused = true;
+        BattleManager.battleManager.PlayerPaused = true;
         enemyBoxer.indicator1.material.color = Color.black;
         enemyBoxer.indicator2.material.color = Color.black;
         enemyBoxer.indicator3.material.color = Color.black;
@@ -35,7 +35,7 @@ public class EnemyKnockoutState : IEnemyStateBoxer
 
 
         timer += Time.deltaTime;
-        GameManager.manager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
+        BattleManager.battleManager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
 
 
 
@@ -44,8 +44,8 @@ public class EnemyKnockoutState : IEnemyStateBoxer
         {
             enemyBoxer.enemyHealth = (float)(enemyBoxer.enemyMaxHealth * (0.3 * (3 - enemyBoxer.enemyKnockoutsThisRound)));
             timer = 0;
-            GameManager.manager.PlayerPaused = false;
-            GameManager.manager.KnockOutTimerTextField.text = "";
+            BattleManager.battleManager.PlayerPaused = false;
+            BattleManager.battleManager.KnockOutTimerTextField.text = "";
 
             enemyBoxer._animator.SetBool("KnockOut", false);
 

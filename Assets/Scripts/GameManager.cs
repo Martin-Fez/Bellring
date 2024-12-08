@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager manager;
 
+    /*
     public bool PlayerPaused = false;
     public bool EnemyPaused = false;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     public float FightTimer = 0;
     public float score = 0;
     public int round = 1;
+    */
 
 
     /*
@@ -75,12 +77,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoundField.text = "Round: 1";
+        //RoundField.text = "Round: 1";
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if(InBattle)
         {
             if(!PlayerPaused || !EnemyPaused)
@@ -90,13 +93,15 @@ public class GameManager : MonoBehaviour
 
         }
 
-
+        */
         if (Input.GetKeyUp(KeyCode.M))
         {
             SceneManager.LoadScene("MainMenu");
         }
+        
     }
 
+    /*
     void MatchTimer()
     {
         FightTimer += Time.deltaTime;
@@ -113,6 +118,7 @@ public class GameManager : MonoBehaviour
             // next round, insert function here
         }
     }
+    */
 
     public void Save()
     {

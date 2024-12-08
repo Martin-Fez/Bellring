@@ -94,7 +94,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
         UpdateManager(); // will maybe call if needed
 
                          // we will update according to the state
-        if (GameManager.manager.EnemyPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
+        if (BattleManager.battleManager.EnemyPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
         {
             currentState = enemyNeutralState;
             return;
