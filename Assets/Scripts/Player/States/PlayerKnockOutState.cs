@@ -80,6 +80,12 @@ public class PlayerKnockOutState : IPlayerState
             GameManager.manager.EnemyPaused = false;
             GameManager.manager.KnockOutTimerTextField.text = "";
 
+            player._animator.SetBool("KnockOut",false);
+            player._animator.ResetTrigger("KnockOutTrigger");
+            player._animator.SetTrigger("KnockOutTrigger");
+            //player._animator.ResetTrigger("KnockOutTrigger");
+
+
             player.currentState = player.neutralState;
         }
 

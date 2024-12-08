@@ -60,6 +60,10 @@ public class EnemyHurtState : IEnemyStateBoxer
                 enemyBoxer.enemyHealth = 0;
                 enemyBoxer.enemyKnockoutsThisRound += 1;
                 enemyBoxer.enemyKnockoutsTotal += 1;
+
+                enemyBoxer._animator.SetBool("KnockOut", true);
+                enemyBoxer._animator.ResetTrigger("KnockOutTrigger");
+                enemyBoxer._animator.SetTrigger("KnockOutTrigger");
                 enemyBoxer.currentState = enemyBoxer.enemyKnockoutState;
                 return; // without return it continues
                 //Debug.Log("THIS SHOULD NOT SHOW");

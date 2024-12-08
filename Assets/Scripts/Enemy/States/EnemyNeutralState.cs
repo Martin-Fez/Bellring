@@ -85,15 +85,19 @@ public class EnemyNeutralState : IEnemyStateBoxer
             enemyBoxer.indicator3.material.color = Color.white;
 
         //*/
-
+        
         if (timer > 7f && timer < 7.1f)
         {
             // insert other things here
+            enemyBoxer._animator.ResetTrigger("Special");
+            enemyBoxer._animator.SetTrigger("Special");
+
 
             enemyBoxer.currentState = enemyBoxer.enemySpecialState;
 
 
         }
+        
 
         //if (timer > 4f)
         //enemyBoxer.debug_Hit = false;

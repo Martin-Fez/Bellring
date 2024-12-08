@@ -29,6 +29,11 @@ public class HurtState : IPlayerState
             {
                 player.knockoutsThisRound += 1;
                 player.knockoutsTotal += 1;
+                player._animator.SetBool("KnockOut", true);
+                player._animator.ResetTrigger("KnockOutTrigger");
+                player._animator.SetTrigger("KnockOutTrigger");
+
+
                 player.currentState = player.knockOutState;
                 return; // without return it continues
                 //Debug.Log("THIS SHOULD NOT SHOW");

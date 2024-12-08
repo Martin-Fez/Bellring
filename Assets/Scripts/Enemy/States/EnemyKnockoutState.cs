@@ -47,6 +47,8 @@ public class EnemyKnockoutState : IEnemyStateBoxer
             GameManager.manager.PlayerPaused = false;
             GameManager.manager.KnockOutTimerTextField.text = "";
 
+            enemyBoxer._animator.SetBool("KnockOut", false);
+
             enemyBoxer.currentState = enemyBoxer.enemyNeutralState;
         }
 
