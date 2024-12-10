@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyNeutralState : IEnemyStateBoxer
@@ -48,7 +49,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
         //timer += Time.deltaTime; // standart
         timer = BattleManager.battleManager.FightTimer;
-        timer = timer % 8;
+        timer = timer % 20;
         enemyBoxer.indicator1.material.color = Color.white;
         enemyBoxer.indicator2.material.color = Color.white;
         enemyBoxer.indicator3.material.color = Color.white;
@@ -60,13 +61,17 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
         //*
 
-        if(timer > 3f && timer < 3.1f)
+        if(BattleManager.battleManager.round == 1 && BattleManager.battleManager.FightTimer < 40)
+        {
+            return;
+        }
+
+
+        
+        if (timer > 3f && timer < 3.1f)
         {
             //enemyBoxer.debug_Hit = true;
-            enemyBoxer.indicator3.material.color = Color.red;
-            enemyBoxer._animator.ResetTrigger("RightHook");
-            enemyBoxer._animator.SetTrigger("RightHook");
-            enemyBoxer.currentState = enemyBoxer.enemyHookState;
+            hookAttack();
 
             //enemyBoxer
 
@@ -75,28 +80,35 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
         if(timer > 6f && timer < 6.1f)
         {
-            enemyBoxer.indicator3.material.color = Color.red;
-            enemyBoxer._animator.ResetTrigger("Jab");
-            enemyBoxer._animator.SetTrigger("Jab");
-            enemyBoxer.currentState = enemyBoxer.enemyJabState;
+            jabAttack();
 
         }
-        else
-            enemyBoxer.indicator3.material.color = Color.white;
+
+
+        if (timer > 9f && timer < 9.1f)
+        {
+            //enemyBoxer.debug_Hit = true;
+            hookAttack();
+
+            //enemyBoxer
+
+        }
+
+
+        if (timer > 12f && timer < 12.1f)
+        {
+            hookAttack();
+        }
 
         //*/
-        
-        if (timer > 7f && timer < 7.1f)
+
+        if (timer > 18f && timer < 18.1f)
         {
-            // insert other things here
-            enemyBoxer._animator.ResetTrigger("Special");
-            enemyBoxer._animator.SetTrigger("Special");
 
-
-            enemyBoxer.currentState = enemyBoxer.enemySpecialState;
-
+            specialAttack();
 
         }
+        
         
 
         //if (timer > 4f)
@@ -106,6 +118,34 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
 
     }
+
+
+    void specialAttack()
+    {
+        // insert other things here
+        enemyBoxer._animator.ResetTrigger("Special");
+        enemyBoxer._animator.SetTrigger("Special");
+
+
+        enemyBoxer.currentState = enemyBoxer.enemySpecialState;
+    }
+
+    void hookAttack()
+    {
+        enemyBoxer.indicator3.material.color = Color.red;
+        enemyBoxer._animator.ResetTrigger("RightHook");
+        enemyBoxer._animator.SetTrigger("RightHook");
+        enemyBoxer.currentState = enemyBoxer.enemyHookState;
+    }
+
+    void jabAttack()
+    {
+        enemyBoxer.indicator3.material.color = Color.red;
+        enemyBoxer._animator.ResetTrigger("Jab");
+        enemyBoxer._animator.SetTrigger("Jab");
+        enemyBoxer.currentState = enemyBoxer.enemyJabState;
+    }
+
 
     // Start is called before the first frame update
     /*

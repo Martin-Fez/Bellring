@@ -32,6 +32,9 @@ public class HurtState : IPlayerState
                 player._animator.SetBool("KnockOut", true);
                 player._animator.ResetTrigger("KnockOutTrigger");
                 player._animator.SetTrigger("KnockOutTrigger");
+                BattleManager.battleManager.UIPanel.SetActive(true);
+                BattleManager.battleManager.InBattle = false;
+
 
 
                 player.currentState = player.knockOutState;

@@ -40,7 +40,6 @@ public class PlayerKnockOutState : IPlayerState
 
 
         timer += Time.deltaTime;
-        BattleManager.battleManager.KnockOutTimerTextField.text = Math.Floor(timer).ToString();
 
         if (Input.GetKeyUp("space"))
             GetUpBar += 100;
@@ -55,9 +54,14 @@ public class PlayerKnockOutState : IPlayerState
 
         if (timer > 10)
         {
+            BattleManager.battleManager.KnockOutTimerTextField.text = "GAME OVER\n ENEMY WINS";
             Debug.Log("enemy wins, play next oponent / whatever");
             return;
         }
+
+
+        BattleManager.battleManager.KnockOutTimerTextField.text = Math.Floor(timer).ToString() + "\nPRESS SPACE TO GET UP!";
+
 
         if (GetUpBar > 1000)
         {
@@ -77,8 +81,11 @@ public class PlayerKnockOutState : IPlayerState
               //  GameManager.manager.health = 1;
 
             timer = 0;
-            BattleManager.battleManager.EnemyPaused = false;
+            //BattleManager.battleManager.EnemyPaused = false;
             BattleManager.battleManager.KnockOutTimerTextField.text = "";
+            BattleManager.battleManager.UIPanel.SetActive(false);
+            BattleManager.battleManager.ResumeMatch = true;
+
 
             player._animator.SetBool("KnockOut",false);
             player._animator.ResetTrigger("KnockOutTrigger");
@@ -87,6 +94,7 @@ public class PlayerKnockOutState : IPlayerState
 
 
             player.currentState = player.neutralState;
+            BattleManager.battleManager.PlayerPaused = true;
         }
 
 

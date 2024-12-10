@@ -61,6 +61,10 @@ public class EnemyHurtState : IEnemyStateBoxer
                 enemyBoxer.enemyKnockoutsThisRound += 1;
                 enemyBoxer.enemyKnockoutsTotal += 1;
 
+
+                BattleManager.battleManager.UIPanel.SetActive(true);
+                BattleManager.battleManager.InBattle = false;
+
                 enemyBoxer._animator.SetBool("KnockOut", true);
                 enemyBoxer._animator.ResetTrigger("KnockOutTrigger");
                 enemyBoxer._animator.SetTrigger("KnockOutTrigger");
