@@ -36,7 +36,7 @@ public class HurtState : IPlayerState
                 BattleManager.battleManager.InBattle = false;
 
 
-
+                //player.fillerKO.fillAmount = 0;
                 player.currentState = player.knockOutState;
                 return; // without return it continues
                 //Debug.Log("THIS SHOULD NOT SHOW");

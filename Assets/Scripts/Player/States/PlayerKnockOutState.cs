@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class PlayerKnockOutState : IPlayerState
 {
@@ -11,9 +12,11 @@ public class PlayerKnockOutState : IPlayerState
     private StatePatternEnemyBoxer enemyBoxer;
     //MeshRenderer original_position;
 
-
+    public float counterKO = 0;
+    public float maxCounterKO = 5;
 
     float GetUpBar = 0;
+    float previousGetUpBar = 0;
 
 
     public PlayerKnockOutState(StatePatternPlayer statePatternPlayer, StatePatternEnemyBoxer StatePatternEnemyBoxer)
@@ -46,9 +49,16 @@ public class PlayerKnockOutState : IPlayerState
 
         //GetUpBar -= 1.5f * GameManager.manager.knockoutsTotal+1; // getupbardecay
         GetUpBar -= 1.5f * player.knockoutsTotal+1; // getupbardecay
+        //previousGetUpBar = player.fillerKO.fillAmount * 1000;
+        //counterKO = 0;
+
+        //updateFiller();
+
 
         if (GetUpBar < 0)
             GetUpBar = 0;
+
+        player.fillerKO.fillAmount = GetUpBar/1000;
 
         Debug.Log(GetUpBar);
 
@@ -69,6 +79,8 @@ public class PlayerKnockOutState : IPlayerState
             player.indicator1.material.color = Color.white;
             player.indicator2.material.color = Color.white;
             player.indicator3.material.color = Color.white;
+
+            player.fillerKO.fillAmount = 0;
 
 
             //GameManager.manager.health = (float)(GameManager.manager.maxHealth * (0.3 * (3 - GameManager.manager.knockoutsThisRound)));
@@ -100,6 +112,23 @@ public class PlayerKnockOutState : IPlayerState
 
 
 
+    }
+
+    public void updateFiller()
+    {
+        if (counterKO > maxCounterKO)
+        {
+            previousGetUpBar = GetUpBar;
+            counterKO = 0;
+        }
+        else
+        {
+            counterKO += Time.deltaTime;
+        }
+
+
+        player.fillerKO.fillAmount = Mathf.Lerp(previousGetUpBar / 1000,
+           GetUpBar / 1000, counterKO / maxCounterKO);
     }
 
 

@@ -33,6 +33,10 @@ public class StatePatternPlayer : MonoBehaviour
     //public int hearts = 30; // if this hits 0, player becomes tired
 
     public Image filler; // this is the image. we\ll adjust fillamount value
+    public Image fillerKO; // this is the image. we\ll adjust fillamount value
+
+    public float counter;
+    public float maxCounter;
 
     public bool LastPunchLeft = false; // could be better but leave as is
 
@@ -108,6 +112,10 @@ public class StatePatternPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateManager();
+
+        updateFiller();
+
         //if (GameManager.manager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
         if (BattleManager.battleManager.PlayerPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
         {
@@ -116,7 +124,6 @@ public class StatePatternPlayer : MonoBehaviour
         }
 
 
-        UpdateManager();
         // we will update according to the state
         currentState.UpdateState();
 
@@ -127,23 +134,43 @@ public class StatePatternPlayer : MonoBehaviour
 
     }
 
+    public void updateFiller()
+    {
+        if (counter > maxCounter)
+        {
+            previousHealth = health;
+            counter = 0;
+        }
+        else
+        {
+            counter += Time.deltaTime;
+        }
+
+
+        filler.fillAmount = Mathf.Lerp(previousHealth / maxHealth,
+            health / maxHealth, counter / maxCounter);
+    }
+
     public void UpdateManager()
     {
         if (hearts < 0)
             hearts = 0;
 
 
-        healthField.text = "player health: " + health.ToString();
+        //healthField.text = "player health: " + health.ToString();
+        healthField.text = "player health: ";
         StarField.text = "Stars: " + stars.ToString();
-        HeartField.text = "hearts: " + hearts.ToString();
+        //StarField.text = stars.ToString();
+        //HeartField.text = "hearts: " + hearts.ToString();
+        HeartField.text = hearts.ToString();
     }
 
 
     
     public void TakeDamage(float damage)
     {
-        //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
-        //counter = 0;
+        previousHealth = filler.fillAmount * maxHealth;
+        counter = 0;
         health -= damage;
     }
     

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 
 public class StatePatternEnemyBoxer : MonoBehaviour
@@ -34,6 +35,9 @@ public class StatePatternEnemyBoxer : MonoBehaviour
 
     public TMP_Text healthField;
     //public TMP_Text nameField;
+
+    public float counter;
+    public float maxCounter;
 
 
 
@@ -93,7 +97,9 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     {
         UpdateManager(); // will maybe call if needed
 
-                         // we will update according to the state
+        updateFiller();
+
+        // we will update according to the state
         if (BattleManager.battleManager.EnemyPaused) // temporary, rewrite other states so they switch to neutral when they enter it and have the return in neutral state
         {
             currentState = enemyNeutralState;
@@ -110,15 +116,34 @@ public class StatePatternEnemyBoxer : MonoBehaviour
 
     }
 
-    public void UpdateManager()
+
+    public void updateFiller()
     {
-        healthField.text = "Enemy Health: " + enemyHealth.ToString();
+        if (counter > maxCounter)
+        {
+            enemyPreviousHealth = enemyHealth;
+            counter = 0;
+        }
+        else
+        {
+            counter += Time.deltaTime;
+        }
+
+
+        filler.fillAmount = Mathf.Lerp(enemyPreviousHealth / enemyMaxHealth,
+            enemyHealth / enemyMaxHealth, counter / maxCounter);
+    }
+
+    public void UpdateManager() // outdated name
+    {
+        //healthField.text = "Enemy Health: " + enemyHealth.ToString();
+        healthField.text = "Enemy Health: ";
     }
 
     public void TakeDamage(float damage)
     {
-        //GameManager.manager.previousHealth = filler.fillAmount * GameManager.manager.maxHealth;
-        //counter = 0;
+        enemyPreviousHealth = filler.fillAmount * enemyMaxHealth;
+        counter = 0;
         enemyHealth -= damage;
     }
 
