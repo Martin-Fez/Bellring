@@ -159,8 +159,8 @@ public class StatePatternPlayer : MonoBehaviour
 
         //healthField.text = "player health: " + health.ToString();
         healthField.text = "player health: ";
-        StarField.text = "Stars: " + stars.ToString();
-        //StarField.text = stars.ToString();
+        //StarField.text = "Stars: " + stars.ToString();
+        StarField.text = stars.ToString();
         //HeartField.text = "hearts: " + hearts.ToString();
         HeartField.text = hearts.ToString();
     }

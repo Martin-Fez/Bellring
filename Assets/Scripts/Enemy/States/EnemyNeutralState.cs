@@ -55,11 +55,18 @@ public class EnemyNeutralState : IEnemyStateBoxer
         enemyBoxer.indicator3.material.color = Color.white;
         enemyBoxer.indicator4_Body.material.color = Color.white;
 
+        //enemyBoxer.currentState = enemyBoxer.enemyLogic.GetComponent<>
 
+        //enemyBoxer.enemyLogic.GetComponent<Enemy1Logic>().returnNextState();
+
+        enemyBoxer.currentState = enemyBoxer.enemyLogic.returnNextState();
+
+
+        return;
 
         //if(timer > 3f && timer < 4f && !enemyBoxer.debug_Hit)
 
-        //*
+        /*
 
         if(BattleManager.battleManager.round == 1 && BattleManager.battleManager.FightTimer < 40)
         {
@@ -100,7 +107,6 @@ public class EnemyNeutralState : IEnemyStateBoxer
             hookAttack();
         }
 
-        //*/
 
         if (timer > 18f && timer < 18.1f)
         {
@@ -108,8 +114,9 @@ public class EnemyNeutralState : IEnemyStateBoxer
             specialAttack();
 
         }
-        
-        
+        */
+
+
 
         //if (timer > 4f)
         //enemyBoxer.debug_Hit = false;
@@ -119,7 +126,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
     }
 
-
+    /*
     void specialAttack()
     {
         // insert other things here
@@ -145,6 +152,8 @@ public class EnemyNeutralState : IEnemyStateBoxer
         enemyBoxer._animator.SetTrigger("Jab");
         enemyBoxer.currentState = enemyBoxer.enemyJabState;
     }
+
+    */
 
 
     // Start is called before the first frame update

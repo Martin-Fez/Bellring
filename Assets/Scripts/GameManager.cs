@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager manager;
 
+    public int lastLevelCleared;
+
     /*
     public bool PlayerPaused = false;
     public bool EnemyPaused = false;
@@ -97,28 +99,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.M))
         {
             SceneManager.LoadScene("MainMenu");
+            if (BattleManager.battleManager != null)
+                Destroy(BattleManager.battleManager.gameObject);
+
         }
         
     }
-
-    /*
-    void MatchTimer()
-    {
-        FightTimer += Time.deltaTime;
-
-        TimerField.text = "Time: " + Math.Floor(FightTimer).ToString();
-
-
-
-        if (FightTimer >= 180)
-        {
-            FightTimer = 0;
-            round += 1;
-            RoundField.text = "Round: " + round.ToString();
-            // next round, insert function here
-        }
-    }
-    */
 
     public void Save()
     {
@@ -132,6 +118,8 @@ public class GameManager : MonoBehaviour
         //data.Level1 = Level1;
         //data.Level2 = Level2;
         //data.Level3 = Level3;
+        data.lastLevelCleared = lastLevelCleared;
+
         bf.Serialize(file, data);
         file.Close();
 
@@ -150,6 +138,9 @@ public class GameManager : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
+            lastLevelCleared = data.lastLevelCleared;
+
+
             // Move the information to Game Manager
            // health = data.health;
             //previousHealth = data.previousHealth;
@@ -165,6 +156,12 @@ public class GameManager : MonoBehaviour
 
 class PlayerData
 {
+    public int lastLevelCleared;
+}
+
+/*
+class PlayerData
+{
     public string currentLevel;
     public float health;// current health left
     public float previousHealth; // before we took damage
@@ -174,5 +171,6 @@ class PlayerData
     public bool Level2;
     public bool Level3;
 }
+*/
 
 // Another class that we can serialize. This cointain only

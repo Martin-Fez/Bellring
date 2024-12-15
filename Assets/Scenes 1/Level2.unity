@@ -2788,6 +2788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c97a4795786f1459980a6b5cbdf9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastLevelCleared: 0
 --- !u!4 &1604636163
 Transform:
   m_ObjectHideFlags: 0
@@ -3064,6 +3065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388c60fdf3899e54b999dfae8726e420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevel: 
   player: {fileID: 758720791}
   enemyBoxer: {fileID: 832886408}
   PlayerPaused: 1

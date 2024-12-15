@@ -40,8 +40,9 @@ public class EnemyKnockoutState : IEnemyStateBoxer
         if (timer > 10)
         {
             BattleManager.battleManager.KnockOutTimerTextField.text = "PLAYER WINS";
+            BattleManager.battleManager.nextFight();
 
-            Debug.Log("Player wins, play next oponent / whatever");
+            //Debug.Log("Player wins, play next oponent / whatever");
             return;
         }
 

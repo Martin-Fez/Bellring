@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,17 @@ public class MenuControl : MonoBehaviour
     {
         Debug.Log("Load Pressed");
         //GameManager.manager.Load();
+    }
+
+    public void Continue()
+    {
+        GameManager.manager.Load();
+        if (GameManager.manager.lastLevelCleared > 2)
+            return;
+
+        SceneManager.LoadScene("Level" + (GameManager.manager.lastLevelCleared+1).ToString());
+
+
     }
 
 }

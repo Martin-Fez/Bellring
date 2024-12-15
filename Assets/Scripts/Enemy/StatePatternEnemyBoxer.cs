@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
@@ -13,7 +14,13 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public MeshRenderer indicator3;
     public MeshRenderer indicator4_Body;
 
+
+    //public GameObject enemyLogicObject;
+    public IEnemyLogic enemyLogic;
+
+
     public Animator _animator;
+
     //public string currentAnimationState = "";
 
     //public bool debug_Hit;
@@ -39,6 +46,9 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public float counter;
     public float maxCounter;
 
+    public float stateCooldown = 0;
+    public float MaxstateCooldown;
+
 
 
     public float enemyHealth;
@@ -57,6 +67,8 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     [HideInInspector] public EnemyNeutralState enemyNeutralState;
     [HideInInspector] public EnemySpecialState enemySpecialState;
     [HideInInspector] public EnemyKnockoutState enemyKnockoutState;
+
+
 
 
 
@@ -88,6 +100,7 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //enemyLogicObject.GetComponent<>
         _animator = gameObject.GetComponent<Animator>();
         currentState = enemyNeutralState;
     }

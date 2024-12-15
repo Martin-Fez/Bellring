@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
+    //public string currentLevel;
+    public string nextLevel;
+
 
     public static BattleManager battleManager;
 
@@ -44,7 +47,8 @@ public class BattleManager : MonoBehaviour
     public int restoreEnemyHP;
 
 
-
+    
+    
     private void Awake()
     {
         // Singleton
@@ -61,8 +65,17 @@ public class BattleManager : MonoBehaviour
             //we will run this if there already is a manager in the scene for some reason
             // then this manger will be a second manager and that is not allowed. We'll destroy the second "king" in this game
             Destroy(gameObject);
+            //Destroy(battleManager);
+            //Destroyimmi(battleManager);
+            //DestroyImmediate(battleManager);
+            //DontDestroyOnLoad(gameObject);
+            //battleManager = this;
+
+            //Destroy(gameObject);
         }
     }
+    
+    
 
 
     // Start is called before the first frame update
@@ -205,11 +218,13 @@ public class BattleManager : MonoBehaviour
 
     void DetermineWinner()
     {
+        Debug.Log("determining winner");
         if (player.knockoutsTotal > enemyBoxer.enemyKnockoutsThisRound || 
             (player.knockoutsTotal == enemyBoxer.enemyKnockoutsThisRound && player.health > enemyBoxer.enemyHealth))
         {
             UIPanel.SetActive(true);
             KnockOutTimerTextField.text = "PLAYER WINS";
+            nextFight();
             return;
 
         }
@@ -219,11 +234,14 @@ public class BattleManager : MonoBehaviour
         {
             UIPanel.SetActive(true);
             KnockOutTimerTextField.text = "ENEMY WINS";
+            returnToMenu();
             return;
         }
 
         UIPanel.SetActive(true);
         KnockOutTimerTextField.text = "TIE";
+        returnToMenu();
+
 
 
 
@@ -252,6 +270,38 @@ public class BattleManager : MonoBehaviour
             RoundIntermission();
 
     }
+
+    public void nextFight()
+    {
+        if (Input.GetKey("space"))
+        {
+            Debug.Log("Next fight being laoded");
+
+            GameManager.manager.lastLevelCleared += 1;
+            if(GameManager.manager.lastLevelCleared > 2)
+            {
+                SceneManager.LoadScene("MainMenu"); // replace with win screen
+                return;
+            }
+
+            GameManager.manager.Save();
+
+            SceneManager.LoadScene("Level" + (GameManager.manager.lastLevelCleared + 1).ToString());
+            Destroy(gameObject);
+            //Destroy(this);
+        }
+    }
+
+    public void returnToMenu()
+    {
+        if (Input.GetKey("space"))
+        {
+            SceneManager.LoadScene("MainMenu");
+            Destroy(gameObject);
+            //Destroy(this);
+        }
+    }
+
 }
 
 

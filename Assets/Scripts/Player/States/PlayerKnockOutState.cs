@@ -65,7 +65,9 @@ public class PlayerKnockOutState : IPlayerState
         if (timer > 10)
         {
             BattleManager.battleManager.KnockOutTimerTextField.text = "GAME OVER\n ENEMY WINS";
-            Debug.Log("enemy wins, play next oponent / whatever");
+            BattleManager.battleManager.returnToMenu();
+
+            //Debug.Log("enemy wins, play next oponent / whatever");
             return;
         }
 
