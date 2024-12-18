@@ -26,7 +26,7 @@ public class EnemyHurtState : IEnemyStateBoxer
 
 
 
-        Debug.Log("Too fast today huh");
+       
         return; //Nothing happens
 
         //throw new System.NotImplementedException();
@@ -64,6 +64,9 @@ public class EnemyHurtState : IEnemyStateBoxer
 
                 BattleManager.battleManager.UIPanel.SetActive(true);
                 BattleManager.battleManager.InBattle = false;
+
+                SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.KnockedOutSFX, enemyBoxer.transform, 1f);
+
 
                 enemyBoxer._animator.SetBool("KnockOut", true);
                 enemyBoxer._animator.ResetTrigger("KnockOutTrigger");

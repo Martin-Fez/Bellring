@@ -32,11 +32,15 @@ public class EnemyJabState : IEnemyStateBoxer
                 player.stars++;
 
             enemyBoxer._animator.SetTrigger("Hurt");
+            SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.GotHit, enemyBoxer.transform, 1f);
+
             timer = 0;
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
         else // block logic, works diffrent for attacks
         {
+            SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.Block, enemyBoxer.transform, 1f);
+
             player.hearts -= 1;
             enemyBoxer.indicator1.material.color = Color.red;
             enemyBoxer.indicator2.material.color = Color.red;

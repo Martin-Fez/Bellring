@@ -14,17 +14,6 @@ public class MenuControl : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    public void Save()
-    {
-        Debug.Log("Save Pressed");
-        //GameManager.manager.Save();
-    }
-
-    public void Load()
-    {
-        Debug.Log("Load Pressed");
-        //GameManager.manager.Load();
-    }
 
     public void Continue()
     {
@@ -35,6 +24,12 @@ public class MenuControl : MonoBehaviour
         SceneManager.LoadScene("Level" + (GameManager.manager.lastLevelCleared+1).ToString());
 
 
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quiting game...");
+        Application.Quit();
     }
 
 }

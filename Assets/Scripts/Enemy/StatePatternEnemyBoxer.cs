@@ -15,6 +15,12 @@ public class StatePatternEnemyBoxer : MonoBehaviour
     public MeshRenderer indicator4_Body;
 
 
+    [SerializeField] public AudioClip KnockedOutSFX;
+    [SerializeField] public AudioClip Block;
+    [SerializeField] public AudioClip PunchThrown;
+    [SerializeField] public AudioClip GotHit;
+
+
     //public GameObject enemyLogicObject;
     public IEnemyLogic enemyLogic;
 

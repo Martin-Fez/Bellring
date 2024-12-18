@@ -280,7 +280,7 @@ public class BattleManager : MonoBehaviour
             GameManager.manager.lastLevelCleared += 1;
             if(GameManager.manager.lastLevelCleared > 2)
             {
-                SceneManager.LoadScene("MainMenu"); // replace with win screen
+                SceneManager.LoadScene("WINSCREEN"); // replace with win screen
                 return;
             }
 

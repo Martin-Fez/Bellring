@@ -13,6 +13,13 @@ public class StatePatternPlayer : MonoBehaviour
     public float playerStandartAttackDamage;
     public float PlayerSpecialAttackDamage;
 
+    [SerializeField] public AudioClip KnockedOutSFX;
+    [SerializeField] public AudioClip Block;
+    [SerializeField] public AudioClip PunchThrown;
+    [SerializeField] public AudioClip GotHit;
+    [SerializeField] public AudioClip StarPunch;
+    [SerializeField] public AudioClip DodgeSFX;
+
 
     public MeshRenderer indicator1;
     public MeshRenderer indicator2;
@@ -112,6 +119,9 @@ public class StatePatternPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseScript.GameIsPaused == true)
+            return;
+
         UpdateManager();
 
         updateFiller();

@@ -29,6 +29,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
 
             enemyBoxer.TakeDamage(damage); // BIG DAMAGE
             enemyBoxer._animator.SetTrigger("Hurt");
+            SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.GotHit, enemyBoxer.transform, 1f);
             enemyBoxer.currentState = enemyBoxer.enemyHurtState;
         }
         else
@@ -36,6 +37,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
         Debug.Log("BLock neutral");
 
             player.hearts -= 1;
+            SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.Block, enemyBoxer.transform, 1f);
             enemyBoxer._animator.SetTrigger("Block");
 
             enemyBoxer.currentState = enemyBoxer.enemyBlockState;
@@ -60,6 +62,7 @@ public class EnemyNeutralState : IEnemyStateBoxer
         //enemyBoxer.enemyLogic.GetComponent<Enemy1Logic>().returnNextState();
 
         enemyBoxer.currentState = enemyBoxer.enemyLogic.returnNextState();
+        
 
 
         return;

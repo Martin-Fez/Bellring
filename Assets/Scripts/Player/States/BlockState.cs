@@ -37,6 +37,8 @@ public class BlockState : IPlayerState
         
         // could make an extra animation here
         player.hearts--;
+        SoundFXManager.instace.PlaySoundFXclip(player.Block, player.transform, 1f);
+
 
         return;
 

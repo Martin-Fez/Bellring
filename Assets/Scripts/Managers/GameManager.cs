@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
         }
 
         */
+        /*
         if (Input.GetKeyUp(KeyCode.M))
         {
             SceneManager.LoadScene("MainMenu");
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
                 Destroy(BattleManager.battleManager.gameObject);
 
         }
+        */
         
     }
 

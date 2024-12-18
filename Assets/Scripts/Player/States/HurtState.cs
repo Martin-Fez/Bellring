@@ -34,6 +34,8 @@ public class HurtState : IPlayerState
                 player._animator.SetTrigger("KnockOutTrigger");
                 BattleManager.battleManager.UIPanel.SetActive(true);
                 BattleManager.battleManager.InBattle = false;
+                SoundFXManager.instace.PlaySoundFXclip(player.KnockedOutSFX, player.transform, 1f);
+
 
 
                 //player.fillerKO.fillAmount = 0;
@@ -53,6 +55,8 @@ public class HurtState : IPlayerState
         timer = 0;
         player._animator.ResetTrigger("Hurt");
         player._animator.SetTrigger("Hurt");
+        SoundFXManager.instace.PlaySoundFXclip(player.GotHit, player.transform, 1f);
+
         // cannot enter this
     }
 }

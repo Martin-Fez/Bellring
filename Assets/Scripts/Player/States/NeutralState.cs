@@ -54,6 +54,7 @@ public class NeutralState : IPlayerState
         {
             player.indicator1.material.color = Color.green;
             player._animator.SetTrigger("BodyBlowLeft");
+            SoundFXManager.instace.PlaySoundFXclip(player.PunchThrown, player.transform, 1f);
             player.currentState = player.lJabState;
             return;
         }
@@ -62,6 +63,8 @@ public class NeutralState : IPlayerState
         {
             player.indicator2.material.color = Color.green;
             player._animator.SetTrigger("BodyBlowRight");
+            SoundFXManager.instace.PlaySoundFXclip(player.PunchThrown, player.transform, 1f);
+
 
             player.currentState = player.rJabState;
             return;
@@ -70,6 +73,7 @@ public class NeutralState : IPlayerState
         if (Input.GetKeyDown("z") && Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator1.material.color = Color.red;
+            SoundFXManager.instace.PlaySoundFXclip(player.PunchThrown, player.transform, 1f);
             player._animator.SetTrigger("JabLeft");
             player.currentState = player.lUpJabState;
             return;
@@ -80,6 +84,7 @@ public class NeutralState : IPlayerState
         if (Input.GetKeyDown("x") && Input.GetKey("up") && player.hearts > 0)
         {
             player.indicator2.material.color = Color.red;
+            SoundFXManager.instace.PlaySoundFXclip(player.PunchThrown, player.transform, 1f);
             player._animator.SetTrigger("JabRight");
 
             player.currentState = player.rUpjabState;
@@ -95,6 +100,7 @@ public class NeutralState : IPlayerState
             player.indicator1.material.color = Color.red;
             player.indicator2.material.color = Color.red;
             player.indicator3.material.color = Color.red;
+            SoundFXManager.instace.PlaySoundFXclip(player.StarPunch, player.transform, 1f);
             player._animator.SetTrigger("UpperCut");
 
             player.currentState = player.upperCutState;
@@ -116,6 +122,7 @@ public class NeutralState : IPlayerState
         {
             player.indicator1.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
+            SoundFXManager.instace.PlaySoundFXclip(player.DodgeSFX, player.transform, 1f);
             player._animator.SetTrigger("DodgeLeft");
 
             player.currentState = player.leftDodgeState;
@@ -126,6 +133,7 @@ public class NeutralState : IPlayerState
         {
             player.indicator2.material.color = Color.blue;
             player.indicator3.material.color = Color.blue;
+            SoundFXManager.instace.PlaySoundFXclip(player.DodgeSFX, player.transform, 1f);
             player._animator.SetTrigger("DodgeRight");
 
             player.currentState = player.rightDodgeState;
@@ -136,6 +144,7 @@ public class NeutralState : IPlayerState
         {
             player.indicator1.material.color = Color.blue;
             player.indicator2.material.color = Color.blue;
+            SoundFXManager.instace.PlaySoundFXclip(player.DodgeSFX, player.transform, 1f);
             player.indicator3.material.color = Color.blue;
             player._animator.SetTrigger("Duck");
 
@@ -153,6 +162,7 @@ public class NeutralState : IPlayerState
 
         //timer = 0;
         player._animator.SetTrigger("Hurt");
+        SoundFXManager.instace.PlaySoundFXclip(player.GotHit, player.transform, 1f);
         player.hearts--;
         player.TakeDamage(damage);
         player.currentState = player.hurtState;

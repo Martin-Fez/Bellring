@@ -42,6 +42,7 @@ public class LJabState : IPlayerState
 
         timer = 0;
         player.hearts--;
+        SoundFXManager.instace.PlaySoundFXclip(player.GotHit, player.transform, 1f);
         player._animator.SetTrigger("Hurt");
         player.TakeDamage(damage);
         player.currentState = player.hurtState;

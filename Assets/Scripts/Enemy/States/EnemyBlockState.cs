@@ -21,7 +21,9 @@ public class EnemyBlockState : IEnemyStateBoxer
     {
 
         player.hearts -= 1;
-        Debug.Log("funny attack block");
+        SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.Block, enemyBoxer.transform, 1f);
+
+
         return; //Nothing happens
         //throw new System.NotImplementedException();
     }

@@ -39,6 +39,7 @@ public class RUpJabState : IPlayerState
     {
 
         timer = 0;
+        SoundFXManager.instace.PlaySoundFXclip(player.GotHit, player.transform, 1f);
         player._animator.SetTrigger("Hurt");
         player.TakeDamage(damage);
         player.hearts--;

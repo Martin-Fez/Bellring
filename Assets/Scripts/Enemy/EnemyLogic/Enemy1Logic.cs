@@ -11,6 +11,8 @@ public class Enemy1Logic : IEnemyLogic
     public float timer = 0;
     public float maxTimer;
 
+
+
     //public IEnemyStateBoxer returnNextState()
     //protected override IEnemyStateBoxer returnNextState()
 
@@ -39,6 +41,9 @@ public class Enemy1Logic : IEnemyLogic
             return nextState;
         }
         //Debug.Log("in logic3");
+
+        SoundFXManager.instace.PlaySoundFXclip(enemyBoxer.Block, enemyBoxer.transform, 1f);
+
 
 
         if ((timer > 3f && timer < 6f) || (timer > 12f && timer < 15f))
