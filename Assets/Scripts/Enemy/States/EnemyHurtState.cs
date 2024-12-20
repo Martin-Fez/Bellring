@@ -22,6 +22,7 @@ public class EnemyHurtState : IEnemyStateBoxer
         timer = 0;
         enemyBoxer._animator.ResetTrigger("Hurt");
         enemyBoxer._animator.SetTrigger("Hurt");
+        Debug.Log("Punch while still in HURT");
 
 
 
