@@ -44,6 +44,8 @@ public class PauseScript : MonoBehaviour
     public void LoadMenu() 
     {
         Time.timeScale = 1f;
+        GameIsPaused = false;
+
         SceneManager.LoadScene("MainMenu");
         if (BattleManager.battleManager != null)
             Destroy(BattleManager.battleManager.gameObject);
